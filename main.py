@@ -19,7 +19,7 @@ async def say_hello(name: str):
 async def get_graph(request: RequestBody, response: Response):
     match request.type:
         case "line_graph":
-            linegraph = produce_scatter(request.data, request.height, request.width)
+            linegraph = produce_scatter(request)
             return linegraph
         case _:
             response.status_code = status.HTTP_400_BAD_REQUEST
