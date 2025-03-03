@@ -26,12 +26,15 @@ def produce_scatter(request: RequestBody):
     # width of graph pane (accounting for padding)
     body_width = request.width - y_axis_size - x_axis_padding_right
 
+    # Calculate optimal number of y-axis ticks (aim for roughly 50 pixels between ticks)
+    optimal_tick_spacing = 50  # pixels between ticks
+    num_y_ticks = max(3, min(10, int(body_height / optimal_tick_spacing)))
+
     # Get the actual data range
     data_min = int(min(request.data))
     actual_max = max(request.data)
     
     # Calculate number of steps needed to cover the range
-    num_y_ticks = 5
     data_range = actual_max - data_min
     y_step = max(1, int((data_range + num_y_ticks - 1) / (num_y_ticks - 1)))  # Ceiling division
     
@@ -66,18 +69,29 @@ def produce_scatter(request: RequestBody):
     drawing.save_svg('example.svg')
     
     # Add axes with scales
-    drawing = generate_axis(drawing, request, vertical_scaling, data_min, y_step, adjusted_max, total_height)
+    drawing = generate_axis(drawing, request, vertical_scaling, data_min, y_step, adjusted_max, total_height, num_y_ticks)
     
     drawing.save_svg('example.svg')
     return True
 
-def generate_axis(drawing: Drawing, request: RequestBody, vertical_scaling: float, data_min: int, y_step: int, adjusted_max: float, total_height: int) -> Drawing:
+def generate_axis(drawing: Drawing, request: RequestBody, vertical_scaling: float, data_min: int, y_step: int, adjusted_max: float, total_height: int, num_y_ticks: int) -> Drawing:
+    # Calculate the y-position of the highest tick mark
+    highest_tick_value = adjusted_max
+    highest_tick_y_pos = total_height - ((highest_tick_value - data_min) * vertical_scaling + request.configuration.x_axis_size)
+    
+    # Calculate the y-position of the highest data point
+    highest_data_point = max(request.data)
+    highest_data_y_pos = total_height - ((highest_data_point - data_min) * vertical_scaling + request.configuration.x_axis_size)
+    
+    # Use the higher position (lower y value) for the y-axis end
+    y_axis_end = min(highest_tick_y_pos, highest_data_y_pos)
+    
     # Draw y-axis (vertical line)
     y_axis = draw.Line(
         request.configuration.y_axis_size, 
         total_height - request.configuration.x_axis_size,
         request.configuration.y_axis_size, 
-        0,  # Start from the very top
+        y_axis_end,  # Stop at the highest point
         stroke='black'
     )
     drawing.append(y_axis)
@@ -93,8 +107,6 @@ def generate_axis(drawing: Drawing, request: RequestBody, vertical_scaling: floa
     drawing.append(x_axis)
 
     # Add y-axis scale markers and values with whole number snapping
-    num_y_ticks = 5
-    
     for i in range(num_y_ticks):
         value = adjusted_max - (i * y_step)
         y_pos = total_height - ((value - data_min) * vertical_scaling + request.configuration.x_axis_size)
@@ -119,13 +131,17 @@ def generate_axis(drawing: Drawing, request: RequestBody, vertical_scaling: floa
         )
         drawing.append(label)
 
-    # Add x-axis scale markers and values (already whole numbers as indices)
-    num_x_ticks = min(len(request.data), 10)  # Don't overcrowd the x-axis
-    x_step = max(1, (len(request.data) - 1) // (num_x_ticks - 1))  # Ensure whole number steps
-    point_distance = (request.width - request.configuration.y_axis_size - 20) / (len(request.data) - 1)  # Account for right padding
-
-    # Adjust number of x ticks based on whole number step
+    # Calculate optimal number of x-axis ticks based on width (aim for roughly 80 pixels between ticks)
+    optimal_x_tick_spacing = 80  # pixels between ticks
+    available_width = request.width - request.configuration.y_axis_size - 20  # Account for padding
+    desired_num_x_ticks = max(3, min(len(request.data), int(available_width / optimal_x_tick_spacing)))
+    
+    # Calculate step size that gives close to desired number of ticks while ensuring whole numbers
+    x_step = max(1, (len(request.data) - 1) // (desired_num_x_ticks - 1))
+    
+    # Calculate actual number of ticks based on step size
     num_x_ticks = ((len(request.data) - 1) // x_step) + 1
+    point_distance = (request.width - request.configuration.y_axis_size - 20) / (len(request.data) - 1)
 
     for i in range(num_x_ticks):
         data_index = i * x_step
