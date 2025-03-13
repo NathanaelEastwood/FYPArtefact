@@ -1,22 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="220" viewBox="0 0 800 220"><defs></defs>
 <rect x="0" y="0" width="800" height="220" fill="white" />
-<path d="M80.0,200.0 L196.66666666666669,170.0" stroke="black" />
-<path d="M196.66666666666669,170.0 L313.33333333333337,140.0" stroke="black" />
-<path d="M313.33333333333337,140.0 L430.00000000000006,110.0" stroke="black" />
-<path d="M430.0,110.0 L546.6666666666666,80.0" stroke="black" />
-<path d="M546.6666666666667,80.0 L663.3333333333334,50.0" stroke="black" />
-<path d="M663.3333333333334,50.0 L780.0,200.0" stroke="black" />
-<path d="M80,200 L80,20.0" stroke="black" />
-<path d="M80,200 L780,200" stroke="black" />
-<path d="M75,20.0 L85,20.0" stroke="black" />
-<text x="70" y="23.0" font-size="8" text-anchor="end">7</text><path d="M75,110.0 L85,110.0" stroke="black" />
-<text x="70" y="113.0" font-size="8" text-anchor="end">4</text><path d="M75,200.0 L85,200.0" stroke="black" />
-<text x="70" y="203.0" font-size="8" text-anchor="end">1</text><path d="M80.0,195 L80.0,205" stroke="black" />
-<text x="80.0" y="220" font-size="8" text-anchor="middle">0</text><path d="M196.66666666666669,195 L196.66666666666669,205" stroke="black" />
-<text x="196.66666666666669" y="220" font-size="8" text-anchor="middle">1</text><path d="M313.33333333333337,195 L313.33333333333337,205" stroke="black" />
-<text x="313.33333333333337" y="220" font-size="8" text-anchor="middle">2</text><path d="M430.0,195 L430.0,205" stroke="black" />
-<text x="430.0" y="220" font-size="8" text-anchor="middle">3</text><path d="M546.6666666666667,195 L546.6666666666667,205" stroke="black" />
-<text x="546.6666666666667" y="220" font-size="8" text-anchor="middle">4</text><path d="M663.3333333333334,195 L663.3333333333334,205" stroke="black" />
-<text x="663.3333333333334" y="220" font-size="8" text-anchor="middle">5</text><path d="M780.0,195 L780.0,205" stroke="black" />
+
+                            <style>
+                                .main_line { stroke: black; stroke-width: 2; transition: stroke 0.2s, stroke-width 0.2s; }
+                                .main_line:hover, .main_line:hover ~ .main_line { stroke: red; stroke-width: 4; }
+                                .hover-zone { stroke: transparent; stroke-width: 10; fill: none; pointer-events: stroke; }
+                            </style>
+                            <path class="hover-zone" d="M80.0,200.0 L196.66666666666669,170.0" />
+<path class="main_line" d="M80.0,200.0 L196.66666666666669,170.0" />
+<path class="hover-zone" d="M196.66666666666669,170.0 L313.33333333333337,140.0" />
+<path class="main_line" d="M196.66666666666669,170.0 L313.33333333333337,140.0" />
+<path class="hover-zone" d="M313.33333333333337,140.0 L430.00000000000006,110.0" />
+<path class="main_line" d="M313.33333333333337,140.0 L430.00000000000006,110.0" />
+<path class="hover-zone" d="M430.0,110.0 L546.6666666666666,80.0" />
+<path class="main_line" d="M430.0,110.0 L546.6666666666666,80.0" />
+<path class="hover-zone" d="M546.6666666666667,80.0 L663.3333333333334,50.0" />
+<path class="main_line" d="M546.6666666666667,80.0 L663.3333333333334,50.0" />
+<path class="hover-zone" d="M663.3333333333334,50.0 L780.0,200.0" />
+<path class="main_line" d="M663.3333333333334,50.0 L780.0,200.0" />
+
+                            <style>
+                                .x_axis { stroke: black; stroke-width: 2; transition: stroke 0.2s, stroke-width 0.2s; }
+                                .x_axis:hover, .x_axis:hover ~ .x_axis { stroke: black; stroke-width: 4; }
+                                .hover-zone { stroke: transparent; stroke-width: 10; fill: none; pointer-events: stroke; }
+                            </style>
+                            <path class="hover-zone" d="M80,200 L80,20.0" />
+<path class="x_axis" d="M80,200 L80,20.0" />
+
+                            <style>
+                                .y-axis { stroke: black; stroke-width: 2; transition: stroke 0.2s, stroke-width 0.2s; }
+                                .y-axis:hover, .y-axis:hover ~ .y-axis { stroke: red; stroke-width: 4; }
+                                .hover-zone { stroke: transparent; stroke-width: 10; fill: none; pointer-events: stroke; }
+                            </style>
+                            <path class="hover-zone" d="M80,200 L780,200" />
+<path class="y-axis" d="M80,200 L780,200" />
+
+                            <style>
+                                .tick_marker { stroke: black; stroke-width: 2; transition: stroke 0.2s, stroke-width 0.2s; }
+                                .tick_marker:hover, .tick_marker:hover ~ .tick_marker { stroke: red; stroke-width: 4; }
+                                .hover-zone { stroke: transparent; stroke-width: 10; fill: none; pointer-events: stroke; }
+                            </style>
+                            <path class="hover-zone" d="M75,20.0 L85,20.0" />
+<path class="tick_marker" d="M75,20.0 L85,20.0" />
+<text x="70" y="23.0" font-size="8" text-anchor="end">7</text><path class="hover-zone" d="M75,110.0 L85,110.0" />
+<path class="tick_marker" d="M75,110.0 L85,110.0" />
+<text x="70" y="113.0" font-size="8" text-anchor="end">4</text><path class="hover-zone" d="M75,200.0 L85,200.0" />
+<path class="tick_marker" d="M75,200.0 L85,200.0" />
+<text x="70" y="203.0" font-size="8" text-anchor="end">1</text><path class="hover-zone" d="M80.0,195 L80.0,205" />
+<path class="tick_marker" d="M80.0,195 L80.0,205" />
+<text x="80.0" y="220" font-size="8" text-anchor="middle">0</text><path class="hover-zone" d="M196.66666666666669,195 L196.66666666666669,205" />
+<path class="tick_marker" d="M196.66666666666669,195 L196.66666666666669,205" />
+<text x="196.66666666666669" y="220" font-size="8" text-anchor="middle">1</text><path class="hover-zone" d="M313.33333333333337,195 L313.33333333333337,205" />
+<path class="tick_marker" d="M313.33333333333337,195 L313.33333333333337,205" />
+<text x="313.33333333333337" y="220" font-size="8" text-anchor="middle">2</text><path class="hover-zone" d="M430.0,195 L430.0,205" />
+<path class="tick_marker" d="M430.0,195 L430.0,205" />
+<text x="430.0" y="220" font-size="8" text-anchor="middle">3</text><path class="hover-zone" d="M546.6666666666667,195 L546.6666666666667,205" />
+<path class="tick_marker" d="M546.6666666666667,195 L546.6666666666667,205" />
+<text x="546.6666666666667" y="220" font-size="8" text-anchor="middle">4</text><path class="hover-zone" d="M663.3333333333334,195 L663.3333333333334,205" />
+<path class="tick_marker" d="M663.3333333333334,195 L663.3333333333334,205" />
+<text x="663.3333333333334" y="220" font-size="8" text-anchor="middle">5</text><path class="hover-zone" d="M780.0,195 L780.0,205" />
+<path class="tick_marker" d="M780.0,195 L780.0,205" />
 <text x="780.0" y="220" font-size="8" text-anchor="middle">6</text></svg>

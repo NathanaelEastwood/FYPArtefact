@@ -61,7 +61,7 @@ def produce_line_graph(request: RequestBody):
         line_end_x = line_start_x + point_distance
         line_end_y = total_height - ((request.data[i + 1] - data_min) * vertical_scaling + x_axis_size)
 
-        drawing.draw_line(line_start_x, line_start_y, line_end_x, line_end_y, 'black')
+        drawing.draw_line(line_start_x, line_start_y, line_end_x, line_end_y, 'black', 'red','main_line')
 
     # Add axes with scales
     drawing = generate_axis(drawing, request, vertical_scaling, data_min, y_step, adjusted_max, total_height, num_y_ticks)
@@ -88,10 +88,10 @@ def generate_axis(drawing: DrawingEngine, request: RequestBody, vertical_scaling
     y_axis_end = min(highest_tick_y_pos, highest_data_y_pos)
     
     # Draw y-axis (vertical line)
-    drawing.draw_line(request.configuration.y_axis_size, total_height - request.configuration.x_axis_size, request.configuration.y_axis_size, y_axis_end, 'black')
+    drawing.draw_line(request.configuration.y_axis_size, total_height - request.configuration.x_axis_size, request.configuration.y_axis_size, y_axis_end, 'black', 'black', 'x_axis')
 
     # Draw x-axis (horizontal line)
-    drawing.draw_line(request.configuration.y_axis_size, total_height - request.configuration.x_axis_size, request.width - 20, total_height - request.configuration.x_axis_size, 'black')
+    drawing.draw_line(request.configuration.y_axis_size, total_height - request.configuration.x_axis_size, request.width - 20, total_height - request.configuration.x_axis_size, 'black', 'red', 'y-axis')
 
     # Add y-axis scale markers and values with whole number snapping
     for i in range(num_y_ticks):
@@ -99,7 +99,7 @@ def generate_axis(drawing: DrawingEngine, request: RequestBody, vertical_scaling
         y_pos = total_height - ((value - data_min) * vertical_scaling + request.configuration.x_axis_size)
         
         # Draw tick mark
-        drawing.draw_line(request.configuration.y_axis_size - 5, y_pos, request.configuration.y_axis_size + 5, y_pos, 'black')
+        drawing.draw_line(request.configuration.y_axis_size - 5, y_pos, request.configuration.y_axis_size + 5, y_pos, 'black', 'red', 'tick_marker')
         
         # Add value label (now always whole numbers)
         drawing.draw_text(request.configuration.y_axis_size - 10, y_pos + 3, 8, 'end', str(int(value)))
@@ -121,7 +121,7 @@ def generate_axis(drawing: DrawingEngine, request: RequestBody, vertical_scaling
         x_pos = request.configuration.y_axis_size + (data_index * point_distance)
         
         # Draw tick mark
-        drawing.draw_line(x_pos, total_height - request.configuration.x_axis_size - 5, x_pos, total_height - request.configuration.x_axis_size + 5, 'black')
+        drawing.draw_line(x_pos, total_height - request.configuration.x_axis_size - 5, x_pos, total_height - request.configuration.x_axis_size + 5, 'black', 'red', 'tick_marker')
         
         # Add value label
         drawing.draw_text(x_pos, total_height - request.configuration.x_axis_size + 20, 8, 'middle', str(data_index))
