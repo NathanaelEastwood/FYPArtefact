@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Response, status
 
-from graph_production import produce_line_graph
-from request_body import RequestBody
+from graph_production import generate_line_graph, generate_scatter_plot
+from request_body import RequestBodyOneDimensional, RequestBodyTwoDimensional
 
 app = FastAPI()
 
@@ -16,11 +16,21 @@ async def say_hello(name: str):
     return {"message": f"Hello {name}"}
 
 @app.put("/graph/get1d", status_code = 200)
-async def get_graph(request: RequestBody, response: Response):
+async def get_graph(request: RequestBodyOneDimensional, response: Response):
     match request.type:
         case "line_graph":
-            linegraph = produce_line_graph(request)
+            linegraph = generate_line_graph(request)
             return linegraph
+        case _:
+            response.status_code = status.HTTP_400_BAD_REQUEST
+            return {"Graph type not recognised."}
+
+@app.put("/graph/get2d", status_code = 200)
+async def get_graph(request: RequestBodyTwoDimensional, response: Response):
+    match request.type:
+        case "scatter_graph":
+            scatter_graph = generate_scatter_plot(request)
+            return scatter_graph
         case _:
             response.status_code = status.HTTP_400_BAD_REQUEST
             return {"Graph type not recognised."}

@@ -19,14 +19,14 @@ class DrawingEngine:
         with open(self.filename, "a") as f:
             f.write(f'<rect x="{x}" y="{y}" width="{width}" height="{height}" fill="{fill_colour}" />\n')
 
-    def draw_line(self, sx: float, sy: float, ex: float, ey: float, stroke_colour: str, hover_colour: str, line_name: str, has_on_hover: bool):
+    def draw_line(self, sx: float, sy: float, ex: float, ey: float, stroke_colour: str, hover_colour: str, line_name: str, has_on_hover: bool, line_width = 1):
         with open(self.filename, "a") as f:
 
             number_of_distinct_lines = len(self.distinct_lines)
             self.distinct_lines.add(line_name)
 
             if number_of_distinct_lines < len(self.distinct_lines):
-                f.write(f'''<style>.{line_name} {{ stroke: {stroke_colour}; stroke-width: 2; transition: stroke 0.2s, stroke-width 0.2s; }}</style>
+                f.write(f'''<style>.{line_name} {{ stroke: {stroke_colour}; stroke-width: {line_width}; transition: stroke 0.2s, stroke-width 0.2s; }}</style>
                 ''')
                 if has_on_hover:
                     f.write(f'''<script>

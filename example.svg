@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="220" viewBox="0 0 800 220"><defs></defs>
 <rect x="0" y="0" width="800" height="220" fill="white" />
-<style>.main_line { stroke: black; stroke-width: 2; transition: stroke 0.2s, stroke-width 0.2s; }</style>
+<style>.main_line { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
                 <script>
                     window.onload = function() {
                         document.querySelectorAll(".main_line").forEach(line => {
@@ -19,25 +19,29 @@
                             });
                         });
                     };
-                    </script><path class="main_line" d="M50.0,125.0 L171.66666666666669,95.0" />
-<path class="main_line" d="M171.66666666666669,95.0 L293.33333333333337,65.0" />
-<path class="main_line" d="M293.33333333333337,65.0 L415.00000000000006,50.0" />
-<path class="main_line" d="M415.0,50.0 L536.6666666666666,140.0" />
-<path class="main_line" d="M536.6666666666667,140.0 L658.3333333333334,125.0" />
-<path class="main_line" d="M658.3333333333334,125.0 L780.0,110.0" />
-<style>.x_axis { stroke: black; stroke-width: 2; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="x_axis" d="M50,140 L50,20.0" />
-<style>.y-axis { stroke: black; stroke-width: 2; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="y-axis" d="M50,140 L780,140" />
-<style>.tick_marker { stroke: black; stroke-width: 2; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="tick_marker" d="M45,20.0 L55,20.0" />
-<text x="40" y="23.0" font-size="8" text-anchor="end">9</text><path class="tick_marker" d="M45,80.0 L55,80.0" />
-<text x="40" y="83.0" font-size="8" text-anchor="end">5</text><path class="tick_marker" d="M45,140.0 L55,140.0" />
-<text x="40" y="143.0" font-size="8" text-anchor="end">1</text><path class="tick_marker" d="M50.0,135 L50.0,145" />
-<text x="50.0" y="160" font-size="8" text-anchor="middle">0</text><path class="tick_marker" d="M171.66666666666669,135 L171.66666666666669,145" />
-<text x="171.66666666666669" y="160" font-size="8" text-anchor="middle">1</text><path class="tick_marker" d="M293.33333333333337,135 L293.33333333333337,145" />
-<text x="293.33333333333337" y="160" font-size="8" text-anchor="middle">2</text><path class="tick_marker" d="M415.0,135 L415.0,145" />
-<text x="415.0" y="160" font-size="8" text-anchor="middle">3</text><path class="tick_marker" d="M536.6666666666667,135 L536.6666666666667,145" />
-<text x="536.6666666666667" y="160" font-size="8" text-anchor="middle">4</text><path class="tick_marker" d="M658.3333333333334,135 L658.3333333333334,145" />
-<text x="658.3333333333334" y="160" font-size="8" text-anchor="middle">5</text><path class="tick_marker" d="M780.0,135 L780.0,145" />
-<text x="780.0" y="160" font-size="8" text-anchor="middle">6</text></svg>
+                    </script><path class="main_line" d="M60,190.0 L134.0,171.11111111111111" />
+<path class="main_line" d="M134.0,171.11111111111111 L208.0,152.22222222222223" />
+<path class="main_line" d="M208.0,152.22222222222223 L282.0,133.33333333333331" />
+<path class="main_line" d="M282.0,133.33333333333331 L356.0,114.44444444444444" />
+<path class="main_line" d="M356.0,114.44444444444444 L430.0,95.55555555555556" />
+<path class="main_line" d="M430.0,95.55555555555556 L504.0,76.66666666666666" />
+<path class="main_line" d="M504.0,76.66666666666666 L578.0,57.77777777777777" />
+<path class="main_line" d="M578.0,57.77777777777777 L652.0,38.888888888888886" />
+<path class="main_line" d="M652.0,38.888888888888886 L726.0,20.0" />
+<style>.x_axis { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
+                <path class="x_axis" d="M60,190 L60,20" />
+<style>.tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
+                <path class="tick" d="M60,171.11111111111111 L42.85714285714286,171.11111111111111" />
+<text x="40.0" y="173.11111111111111" font-size="8" text-anchor="end">2</text><path class="tick" d="M60,133.33333333333334 L42.85714285714286,133.33333333333334" />
+<text x="40.0" y="135.33333333333334" font-size="8" text-anchor="end">4</text><path class="tick" d="M60,95.55555555555557 L42.85714285714286,95.55555555555557" />
+<text x="40.0" y="97.55555555555557" font-size="8" text-anchor="end">6</text><path class="tick" d="M60,57.77777777777779 L42.85714285714286,57.77777777777779" />
+<text x="40.0" y="59.77777777777779" font-size="8" text-anchor="end">8</text><path class="tick" d="M60,20.000000000000014 L42.85714285714286,20.000000000000014" />
+<text x="40.0" y="22.000000000000014" font-size="8" text-anchor="end">10</text><path class="tick" d="M60,-17.777777777777764 L42.85714285714286,-17.777777777777764" />
+<text x="40.0" y="-15.777777777777764" font-size="8" text-anchor="end">12</text><path class="x_axis" d="M60,190 L780,190" />
+<path class="tick" d="M60.0,190 L60.0,195" />
+<text x="60.0" y="205" font-size="8" text-anchor="middle">0</text><path class="tick" d="M204.0,190 L204.0,195" />
+<text x="204.0" y="205" font-size="8" text-anchor="middle">2</text><path class="tick" d="M348.0,190 L348.0,195" />
+<text x="348.0" y="205" font-size="8" text-anchor="middle">4</text><path class="tick" d="M492.0,190 L492.0,195" />
+<text x="492.0" y="205" font-size="8" text-anchor="middle">6</text><path class="tick" d="M636.0,190 L636.0,195" />
+<text x="636.0" y="205" font-size="8" text-anchor="middle">8</text><path class="tick" d="M780.0,190 L780.0,195" />
+<text x="780.0" y="205" font-size="8" text-anchor="middle">10</text></svg>
