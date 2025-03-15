@@ -31,7 +31,7 @@ def generate_line_graph(request: RequestBodyOneDimensional):
         line_end_x = current_line_start + horizontal_scaling
         line_end_y = request.height - ((request.data[i + 1] - data_min) * vertical_scaling + request.configuration.x_axis_size)
 
-        drawing.draw_line(line_start_x, line_start_y + 20, line_end_x, line_end_y + 20, 'black', 'red','main_line', True)
+        drawing.draw_line(line_start_x, line_start_y + 20, line_end_x, line_end_y + 20, 'black', 'red','main_line', True, line_width=1)
         current_line_start += horizontal_scaling
 
     # Add axes with scales
@@ -43,55 +43,28 @@ def generate_line_graph(request: RequestBodyOneDimensional):
 
 def generate_scatter_plot(request: RequestBodyTwoDimensional):
 
-    drawing = DrawingEngine("example")
-    drawing.establish_headers(request.width, request.height)
-    drawing.draw_rect(0, 0, request.width, request.height, "white")
-    array = np.array(request.data)
-    highest_value = np.max(array[:, 0])
-    lowest_value = np.min(array[:, 0])
-    data_range = abs(highest_value - lowest_value)
-    vertical_scaling = request.height / data_range
-
-    # Define padding for the axes (to prevent clipping)
-    y_axis_padding_top = 20  # Padding at the top of y-axis
-    x_axis_padding_right = 20  # Padding at the right of x-axis
-
-    # Create drawing with adjusted height to account for padding
-    total_height = request.height + y_axis_padding_top
-
     drawing = DrawingEngine("example.svg")
-    drawing.establish_headers(request.width, total_height)
-    drawing.draw_rect(0, 0, request.width, total_height, "white")
-
-    # the amount of space reserved for rendering the horizontal and vertical axis
-    x_axis_size = request.configuration.x_axis_size
-    y_axis_size = request.configuration.y_axis_size
-
-    # height of graph pane (accounting for padding)
-    body_height = request.height - x_axis_size
-    # width of graph pane (accounting for padding)
-    body_width = request.width - y_axis_size - x_axis_padding_right
-
-    # Calculate optimal number of y-axis ticks (aim for roughly 50 pixels between ticks)
-    optimal_tick_spacing = 50  # pixels between ticks
-    num_y_ticks = max(3, min(10, int(body_height / optimal_tick_spacing)))
-
-    y_step = max(1, int((data_range + num_y_ticks - 1) / (num_y_ticks - 1)))  # Ceiling division
-    adjusted_max = lowest_value + y_step * (num_y_ticks - 1)
+    drawing.establish_headers(request.width, request.height + 20)
+    drawing.draw_rect(0, 0, request.width, request.height + 20, "white")
 
     drawing = generate_y_axis(drawing, request)
+    drawing = generate_x_axis(drawing, request)
 
+    drawing.close_file()
     return True
-
-import math
 
 def generate_y_axis(drawing: DrawingEngine, request) -> DrawingEngine:
     # Draw the y-axis
     drawing.draw_line(request.configuration.y_axis_size, request.height - request.configuration.x_axis_size + 20,
                       request.configuration.y_axis_size, 20, 'black', 'black', 'x_axis', False)
 
-    data_min = min(request.data)
-    data_max = max(request.data)
+    if type(request.data[0]) == list:
+        array = np.array(request.data)
+        data_min = np.min(array[:, 0])
+        data_max = np.max(array[:, 0])
+    else:
+        data_min = min(request.data)
+        data_max = max(request.data)
     graph_value_range = abs(data_max - data_min)
 
     tick_interval = get_nice_number(graph_value_range / 5)  # Aim for ~5 ticks
@@ -125,7 +98,14 @@ def generate_x_axis(drawing: DrawingEngine, request):
                       request.width - 20, (request.height - request.configuration.x_axis_size)  + 20, 'black', 'black',
                       'x_axis', False)
 
-    graph_value_range = len(request.data)
+    # detect if input is 2d
+    if type(request.data[0]) == list:
+        array = np.array(request.data)
+        data_min = np.min(array[:, 0])
+        data_max = np.max(array[:, 0])
+        graph_value_range = abs(data_max - data_min)
+    else:
+        graph_value_range = len(request.data)
 
     # Choose a "nice" tick interval
     tick_interval = get_nice_number(graph_value_range / 5)  # Aim for ~5 ticks

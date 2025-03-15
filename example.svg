@@ -1,47 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="220" viewBox="0 0 800 220"><defs></defs>
-<rect x="0" y="0" width="800" height="220" fill="white" />
-<style>.main_line { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <script>
-                    window.onload = function() {
-                        document.querySelectorAll(".main_line").forEach(line => {
-                            line.addEventListener("mouseenter", function () {
-                                document.querySelectorAll(".main_line").forEach(l => {
-                                    l.style.stroke = "red";
-                                    l.style.strokeWidth = "4px";
-                                });
-                            });
-                            line.addEventListener("mouseleave", function () {
-                                document.querySelectorAll(".main_line").forEach(l => {
-                                    l.style.stroke = "black";
-                                    l.style.strokeWidth = "2px";
-                                });
-                            });
-                        });
-                    };
-                    </script><path class="main_line" d="M60,190.0 L134.0,171.11111111111111" />
-<path class="main_line" d="M134.0,171.11111111111111 L208.0,152.22222222222223" />
-<path class="main_line" d="M208.0,152.22222222222223 L282.0,133.33333333333331" />
-<path class="main_line" d="M282.0,133.33333333333331 L356.0,114.44444444444444" />
-<path class="main_line" d="M356.0,114.44444444444444 L430.0,95.55555555555556" />
-<path class="main_line" d="M430.0,95.55555555555556 L504.0,76.66666666666666" />
-<path class="main_line" d="M504.0,76.66666666666666 L578.0,57.77777777777777" />
-<path class="main_line" d="M578.0,57.77777777777777 L652.0,38.888888888888886" />
-<path class="main_line" d="M652.0,38.888888888888886 L726.0,20.0" />
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="320" viewBox="0 0 600 320"><defs></defs>
+<rect x="0" y="0" width="600" height="320" fill="white" />
 <style>.x_axis { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="x_axis" d="M60,190 L60,20" />
+                <path class="x_axis" d="M50,270 L50,20" />
 <style>.tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="tick" d="M60,171.11111111111111 L42.85714285714286,171.11111111111111" />
-<text x="40.0" y="173.11111111111111" font-size="8" text-anchor="end">2</text><path class="tick" d="M60,133.33333333333334 L42.85714285714286,133.33333333333334" />
-<text x="40.0" y="135.33333333333334" font-size="8" text-anchor="end">4</text><path class="tick" d="M60,95.55555555555557 L42.85714285714286,95.55555555555557" />
-<text x="40.0" y="97.55555555555557" font-size="8" text-anchor="end">6</text><path class="tick" d="M60,57.77777777777779 L42.85714285714286,57.77777777777779" />
-<text x="40.0" y="59.77777777777779" font-size="8" text-anchor="end">8</text><path class="tick" d="M60,20.000000000000014 L42.85714285714286,20.000000000000014" />
-<text x="40.0" y="22.000000000000014" font-size="8" text-anchor="end">10</text><path class="tick" d="M60,-17.777777777777764 L42.85714285714286,-17.777777777777764" />
-<text x="40.0" y="-15.777777777777764" font-size="8" text-anchor="end">12</text><path class="x_axis" d="M60,190 L780,190" />
-<path class="tick" d="M60.0,190 L60.0,195" />
-<text x="60.0" y="205" font-size="8" text-anchor="middle">0</text><path class="tick" d="M204.0,190 L204.0,195" />
-<text x="204.0" y="205" font-size="8" text-anchor="middle">2</text><path class="tick" d="M348.0,190 L348.0,195" />
-<text x="348.0" y="205" font-size="8" text-anchor="middle">4</text><path class="tick" d="M492.0,190 L492.0,195" />
-<text x="492.0" y="205" font-size="8" text-anchor="middle">6</text><path class="tick" d="M636.0,190 L636.0,195" />
-<text x="636.0" y="205" font-size="8" text-anchor="middle">8</text><path class="tick" d="M780.0,190 L780.0,195" />
-<text x="780.0" y="205" font-size="8" text-anchor="middle">10</text></svg>
+                <path class="tick" d="M50,270.0 L35.714285714285715,270.0" />
+<text x="33.333333333333336" y="272.0" font-size="8" text-anchor="end">1</text><path class="tick" d="M50,207.5 L35.714285714285715,207.5" />
+<text x="33.333333333333336" y="209.5" font-size="8" text-anchor="end">1</text><path class="tick" d="M50,145.0 L35.714285714285715,145.0" />
+<text x="33.333333333333336" y="147.0" font-size="8" text-anchor="end">2</text><path class="tick" d="M50,82.5 L35.714285714285715,82.5" />
+<text x="33.333333333333336" y="84.5" font-size="8" text-anchor="end">2</text><path class="tick" d="M50,20.0 L35.714285714285715,20.0" />
+<text x="33.333333333333336" y="22.0" font-size="8" text-anchor="end">3</text><path class="x_axis" d="M50,270 L580,270" />
+<path class="tick" d="M50.0,270 L50.0,275" />
+<text x="50.0" y="285" font-size="8" text-anchor="middle">0</text><path class="tick" d="M182.5,270 L182.5,275" />
+<text x="182.5" y="285" font-size="8" text-anchor="middle">0</text><path class="tick" d="M315.0,270 L315.0,275" />
+<text x="315.0" y="285" font-size="8" text-anchor="middle">1</text><path class="tick" d="M447.5,270 L447.5,275" />
+<text x="447.5" y="285" font-size="8" text-anchor="middle">1</text><path class="tick" d="M580.0,270 L580.0,275" />
+<text x="580.0" y="285" font-size="8" text-anchor="middle">2</text></svg>
