@@ -29,9 +29,22 @@
 <text x="634.0" y="785" font-size="8" text-anchor="middle">3.0</text>
 <path class="tick" d="M780.0,770 L780.0,775" />
 <text x="780.0" y="785" font-size="8" text-anchor="middle">3.5</text>
-<circle cx="50.0" cy="770.0" r="2"/>
-<circle cx="342.0" cy="470.0" r="2"/>
-<circle cx="196.0" cy="620.0" r="2"/>
-<circle cx="634.0" cy="170.0" r="2"/>
-<circle cx="780.0" cy="20.0" r="2"/>
+<circle cx="50.0" cy="770.0" r="2">
+  <title>X: 1.0, Y: 1.0</title>
+</circle>
+<circle cx="342.0" cy="470.0" r="2">
+  <title>X: 2.0, Y: 2.0</title>
+</circle>
+<circle cx="196.0" cy="620.0" r="2">
+  <title>X: 1.5, Y: 1.5</title>
+</circle>
+<circle cx="634.0" cy="170.0" r="2">
+  <title>X: 3.0, Y: 3.0</title>
+</circle>
+<circle cx="342.0" cy="170.0" r="2">
+  <title>X: 2.0, Y: 3.0</title>
+</circle>
+<circle cx="780.0" cy="20.0" r="2">
+  <title>X: 3.5, Y: 3.5</title>
+</circle>
 </svg>

@@ -64,7 +64,9 @@ def generate_scatter_plot(request: RequestBodyTwoDimensional):
     drawing = generate_x_axis(drawing, request)
 
     for data_point in request.data:
-        drawing.draw_point((horizontal_scaling * (data_point[0] - starting_point)) + request.configuration.y_axis_size, (request.height - request.configuration.x_axis_size + 20) - (vertical_scaling * (data_point[1] - data_min)))
+        x_coordinate = (horizontal_scaling * (data_point[0] - starting_point)) + request.configuration.y_axis_size
+        y_coordinate = (request.height - request.configuration.x_axis_size + 20) - (vertical_scaling * (data_point[1] - data_min))
+        drawing.draw_point(x_coordinate, y_coordinate, label = f"X: {data_point[0]}, Y: {data_point[1]}")
 
     drawing.close_file()
     return True

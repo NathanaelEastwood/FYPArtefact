@@ -54,6 +54,8 @@ class DrawingEngine:
         with open(self.filename, "a") as f:
             f.write(f'<text x="{x}" y="{y}" font-size="{font_size}" text-anchor="{anchor_position}">{content}</text>\n')
 
-    def draw_point(self, x: float, y: float, radius = 2):
+    def draw_point(self, x: float, y: float, radius=2, label=""):
         with open(self.filename, "a") as f:
-            f.write(f'<circle cx="{x}" cy="{y}" r="{radius}"/>\n')
+            f.write(f'<circle cx="{x}" cy="{y}" r="{radius}">\n')
+            f.write(f'  <title>{label}</title>\n')
+            f.write(f'</circle>\n')
