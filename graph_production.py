@@ -47,8 +47,24 @@ def generate_scatter_plot(request: RequestBodyTwoDimensional):
     drawing.establish_headers(request.width, request.height + 20)
     drawing.draw_rect(0, 0, request.width, request.height + 20, "white")
 
+    array = np.array(request.data)
+    starting_point = np.min(array[:, 1])
+    ending_point = np.max(array[:, 1])
+    data_min = np.min(array[:, 0])
+    data_max = np.max(array[:, 0])
+    graph_value_range = abs(data_max - data_min)
+    graph_horizontal_data_range = abs(ending_point - starting_point)
+    # This is the number of pixels per 1 change in the graph data
+    vertical_scaling = (request.height - request.configuration.x_axis_size) / graph_value_range
+
+    # This is the distance between each data point horizontally
+    horizontal_scaling = (request.width - request.configuration.y_axis_size - 20) / graph_horizontal_data_range
+
     drawing = generate_y_axis(drawing, request)
     drawing = generate_x_axis(drawing, request)
+
+    for data_point in request.data:
+        drawing.draw_point((horizontal_scaling * (data_point[0] - starting_point)) + request.configuration.y_axis_size, (request.height - request.configuration.x_axis_size + 20) - (vertical_scaling * (data_point[1] - data_min)))
 
     drawing.close_file()
     return True
@@ -80,7 +96,7 @@ def generate_y_axis(drawing: DrawingEngine, request) -> DrawingEngine:
 
     # Draw ticks and labels
     for i in range(number_of_y_ticks + 1):
-        position_text = str(int(current_y_tick_value))
+        position_text = str(round(current_y_tick_value, 2))
 
         drawing.draw_line(request.configuration.y_axis_size, current_y_tick_offset + 20,
                           request.configuration.y_axis_size / 1.4, current_y_tick_offset + 20, "black", "black", "tick", False)
@@ -106,6 +122,7 @@ def generate_x_axis(drawing: DrawingEngine, request):
         graph_value_range = abs(data_max - data_min)
     else:
         graph_value_range = len(request.data)
+        data_min = 0
 
     # Choose a "nice" tick interval
     tick_interval = get_nice_number(graph_value_range / 5)  # Aim for ~5 ticks
@@ -122,7 +139,7 @@ def generate_x_axis(drawing: DrawingEngine, request):
 
     # Draw x-axis ticks and labels
     for i in range(number_of_x_ticks + 1):
-        position_text = str(int(current_x_tick_offset/horizontal_scaling))
+        position_text = str(round(((current_x_tick_offset - request.configuration.y_axis_size)/horizontal_scaling) + data_min, 2))
 
         drawing.draw_line(current_x_tick_offset, (request.height - request.configuration.x_axis_size) + 20,
                           current_x_tick_offset, (request.height - request.configuration.x_axis_size) + 25, "black",

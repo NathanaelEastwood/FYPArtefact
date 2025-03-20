@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="320" viewBox="0 0 600 320"><defs></defs>
-<rect x="0" y="0" width="600" height="320" fill="white" />
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="820" viewBox="0 0 800 820"><defs></defs>
+<rect x="0" y="0" width="800" height="820" fill="white" />
 <style>.x_axis { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="x_axis" d="M50,270 L50,20" />
+                <path class="x_axis" d="M50,770 L50,20" />
 <style>.tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="tick" d="M50,270.0 L35.714285714285715,270.0" />
-<text x="33.333333333333336" y="272.0" font-size="8" text-anchor="end">1</text><path class="tick" d="M50,207.5 L35.714285714285715,207.5" />
-<text x="33.333333333333336" y="209.5" font-size="8" text-anchor="end">1</text><path class="tick" d="M50,145.0 L35.714285714285715,145.0" />
-<text x="33.333333333333336" y="147.0" font-size="8" text-anchor="end">2</text><path class="tick" d="M50,82.5 L35.714285714285715,82.5" />
-<text x="33.333333333333336" y="84.5" font-size="8" text-anchor="end">2</text><path class="tick" d="M50,20.0 L35.714285714285715,20.0" />
-<text x="33.333333333333336" y="22.0" font-size="8" text-anchor="end">3</text><path class="x_axis" d="M50,270 L580,270" />
-<path class="tick" d="M50.0,270 L50.0,275" />
-<text x="50.0" y="285" font-size="8" text-anchor="middle">0</text><path class="tick" d="M182.5,270 L182.5,275" />
-<text x="182.5" y="285" font-size="8" text-anchor="middle">0</text><path class="tick" d="M315.0,270 L315.0,275" />
-<text x="315.0" y="285" font-size="8" text-anchor="middle">1</text><path class="tick" d="M447.5,270 L447.5,275" />
-<text x="447.5" y="285" font-size="8" text-anchor="middle">1</text><path class="tick" d="M580.0,270 L580.0,275" />
-<text x="580.0" y="285" font-size="8" text-anchor="middle">2</text></svg>
+                <path class="tick" d="M50,770.0 L35.714285714285715,770.0" />
+<text x="33.333333333333336" y="772.0" font-size="8" text-anchor="end">1.0</text>
+<path class="tick" d="M50,620.0 L35.714285714285715,620.0" />
+<text x="33.333333333333336" y="622.0" font-size="8" text-anchor="end">1.5</text>
+<path class="tick" d="M50,470.0 L35.714285714285715,470.0" />
+<text x="33.333333333333336" y="472.0" font-size="8" text-anchor="end">2.0</text>
+<path class="tick" d="M50,320.0 L35.714285714285715,320.0" />
+<text x="33.333333333333336" y="322.0" font-size="8" text-anchor="end">2.5</text>
+<path class="tick" d="M50,170.0 L35.714285714285715,170.0" />
+<text x="33.333333333333336" y="172.0" font-size="8" text-anchor="end">3.0</text>
+<path class="tick" d="M50,20.0 L35.714285714285715,20.0" />
+<text x="33.333333333333336" y="22.0" font-size="8" text-anchor="end">3.5</text>
+<path class="x_axis" d="M50,770 L780,770" />
+<path class="tick" d="M50.0,770 L50.0,775" />
+<text x="50.0" y="785" font-size="8" text-anchor="middle">1.0</text>
+<path class="tick" d="M196.0,770 L196.0,775" />
+<text x="196.0" y="785" font-size="8" text-anchor="middle">1.5</text>
+<path class="tick" d="M342.0,770 L342.0,775" />
+<text x="342.0" y="785" font-size="8" text-anchor="middle">2.0</text>
+<path class="tick" d="M488.0,770 L488.0,775" />
+<text x="488.0" y="785" font-size="8" text-anchor="middle">2.5</text>
+<path class="tick" d="M634.0,770 L634.0,775" />
+<text x="634.0" y="785" font-size="8" text-anchor="middle">3.0</text>
+<path class="tick" d="M780.0,770 L780.0,775" />
+<text x="780.0" y="785" font-size="8" text-anchor="middle">3.5</text>
+<circle cx="50.0" cy="770.0" r="2"/>
+<circle cx="342.0" cy="470.0" r="2"/>
+<circle cx="196.0" cy="620.0" r="2"/>
+<circle cx="634.0" cy="170.0" r="2"/>
+<circle cx="780.0" cy="20.0" r="2"/>
+</svg>
