@@ -1,50 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="820" viewBox="0 0 800 820"><defs></defs>
-<rect x="0" y="0" width="800" height="820" fill="white" />
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="420" viewBox="0 0 400 420"><defs></defs>
+<rect x="0" y="0" width="400" height="420" fill="white" stroke="none"/>
 <style>.x_axis { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="x_axis" d="M50,770 L50,20" />
+                <path class="x_axis" d="M50,370 L50,20" />
 <style>.tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="tick" d="M50,770.0 L35.714285714285715,770.0" />
-<text x="33.333333333333336" y="772.0" font-size="8" text-anchor="end">1.0</text>
-<path class="tick" d="M50,620.0 L35.714285714285715,620.0" />
-<text x="33.333333333333336" y="622.0" font-size="8" text-anchor="end">1.5</text>
-<path class="tick" d="M50,470.0 L35.714285714285715,470.0" />
-<text x="33.333333333333336" y="472.0" font-size="8" text-anchor="end">2.0</text>
-<path class="tick" d="M50,320.0 L35.714285714285715,320.0" />
-<text x="33.333333333333336" y="322.0" font-size="8" text-anchor="end">2.5</text>
-<path class="tick" d="M50,170.0 L35.714285714285715,170.0" />
-<text x="33.333333333333336" y="172.0" font-size="8" text-anchor="end">3.0</text>
+                <path class="tick" d="M50,370.0 L35.714285714285715,370.0" />
+<text x="33.333333333333336" y="372.0" font-size="8" text-anchor="end">1.0</text>
+<path class="tick" d="M50,282.5 L35.714285714285715,282.5" />
+<text x="33.333333333333336" y="284.5" font-size="8" text-anchor="end">1.5</text>
+<path class="tick" d="M50,195.0 L35.714285714285715,195.0" />
+<text x="33.333333333333336" y="197.0" font-size="8" text-anchor="end">2.0</text>
+<path class="tick" d="M50,107.5 L35.714285714285715,107.5" />
+<text x="33.333333333333336" y="109.5" font-size="8" text-anchor="end">2.5</text>
 <path class="tick" d="M50,20.0 L35.714285714285715,20.0" />
-<text x="33.333333333333336" y="22.0" font-size="8" text-anchor="end">3.5</text>
-<path class="x_axis" d="M50,770 L780,770" />
-<path class="tick" d="M50.0,770 L50.0,775" />
-<text x="50.0" y="785" font-size="8" text-anchor="middle">1.0</text>
-<path class="tick" d="M196.0,770 L196.0,775" />
-<text x="196.0" y="785" font-size="8" text-anchor="middle">1.5</text>
-<path class="tick" d="M342.0,770 L342.0,775" />
-<text x="342.0" y="785" font-size="8" text-anchor="middle">2.0</text>
-<path class="tick" d="M488.0,770 L488.0,775" />
-<text x="488.0" y="785" font-size="8" text-anchor="middle">2.5</text>
-<path class="tick" d="M634.0,770 L634.0,775" />
-<text x="634.0" y="785" font-size="8" text-anchor="middle">3.0</text>
-<path class="tick" d="M780.0,770 L780.0,775" />
-<text x="780.0" y="785" font-size="8" text-anchor="middle">3.5</text>
-<circle cx="50.0" cy="770.0" r="2">
-  <title>X: 1.0, Y: 1.0</title>
-</circle>
-<circle cx="342.0" cy="470.0" r="2">
-  <title>X: 2.0, Y: 2.0</title>
-</circle>
-<circle cx="196.0" cy="620.0" r="2">
-  <title>X: 1.5, Y: 1.5</title>
-</circle>
-<circle cx="634.0" cy="170.0" r="2">
-  <title>X: 3.0, Y: 3.0</title>
-</circle>
-<circle cx="342.0" cy="170.0" r="2">
-  <title>X: 2.0, Y: 3.0</title>
-</circle>
-<circle cx="780.0" cy="20.0" r="2">
-  <title>X: 3.5, Y: 3.5</title>
-</circle>
+<text x="33.333333333333336" y="22.0" font-size="8" text-anchor="end">3.0</text>
+<path class="x_axis" d="M50,370 L380,370" />
+<text x="105.0" y="390" font-size="12" text-anchor="middle">One</text>
+<text x="215.0" y="390" font-size="12" text-anchor="middle">Two</text>
+<text x="325.0" y="390" font-size="12" text-anchor="middle">Three</text>
+<style>.bottom_tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
+                <path class="bottom_tick" d="M160.0,370 L160.0,395.0" />
+<path class="bottom_tick" d="M270.0,370 L270.0,395.0" />
+<path class="bottom_tick" d="M380.0,370 L380.0,395.0" />
+<rect x="50.0" y="253.33333333333331" width="110.0" height="116.66666666666667" fill="gainsboro" stroke="black"/>
+<rect x="160.0" y="136.66666666666666" width="110.0" height="233.33333333333334" fill="gainsboro" stroke="black"/>
+<rect x="270.0" y="20.0" width="110.0" height="350.0" fill="gainsboro" stroke="black"/>
 </svg>

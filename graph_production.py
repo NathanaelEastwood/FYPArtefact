@@ -1,12 +1,9 @@
 import math
-
 from DrawingEngine import DrawingEngine
 from request_body import RequestBodyOneDimensional, RequestBodyTwoDimensional
 import numpy as np
 
-
 def generate_line_graph(request: RequestBodyOneDimensional):
-
     drawing = DrawingEngine("example.svg")
     drawing.establish_headers(request.width, request.height + 20)
     drawing.draw_rect(0, 0, request.width, request.height + 20, "white")
@@ -41,7 +38,7 @@ def generate_line_graph(request: RequestBodyOneDimensional):
     drawing.close_file()
     return True
 
-def generate_scatter_plot(request: RequestBodyTwoDimensional):
+def generate_scatter_plot(request: RequestBodyOneDimensional):
 
     drawing = DrawingEngine("example.svg")
     drawing.establish_headers(request.width, request.height + 20)
@@ -70,6 +67,54 @@ def generate_scatter_plot(request: RequestBodyTwoDimensional):
 
     drawing.close_file()
     return True
+
+def generate_bar_chart(request: RequestBodyOneDimensional):
+    drawing = DrawingEngine("example.svg")
+    drawing.establish_headers(request.width, request.height + 20)
+    drawing.draw_rect(0, 0, request.width, request.height + 20, "white")
+
+    data_max = max(request.data)
+    number_of_rects_to_draw = len(request.data)
+    available_width = request.width - request.configuration.y_axis_size - 20
+    width_per_rect = available_width/number_of_rects_to_draw
+
+    vertical_scaling = (request.height - request.configuration.x_axis_size) / data_max
+
+    generate_y_axis(drawing, request)
+    generate_bar_chart_labels(drawing, request)
+
+    # draw the coloured rectangles
+    for i, point in enumerate(request.data):
+        top_coordinate = request.height - (vertical_scaling * point) - request.configuration.x_axis_size + 20
+        drawing.draw_rect(width_per_rect * i + request.configuration.y_axis_size, top_coordinate, width_per_rect, vertical_scaling * point, "gainsboro", stroke="black")
+
+    drawing.close_file()
+    return True
+
+def generate_bar_chart_labels(drawing: DrawingEngine, request) -> DrawingEngine:
+    drawing.draw_line(request.configuration.y_axis_size, (request.height - request.configuration.x_axis_size) + 20,
+                      request.width - 20, (request.height - request.configuration.x_axis_size) + 20, 'black', 'black',
+                      'x_axis', False)
+
+    # We need to find the center point of each bar chart entry.
+    number_of_rects_to_draw = len(request.data)
+    available_width = request.width - request.configuration.y_axis_size - 20
+    width_per_rect = available_width/number_of_rects_to_draw
+
+    # Draw in the text labels
+    current_x_coordinate = request.configuration.y_axis_size + width_per_rect/2
+    for i in range(len(request.data)):
+        drawing.draw_text(current_x_coordinate, request.height - request.configuration.x_axis_size + 40, 12, "middle", request.configuration.bar_chart_labels[i])
+        current_x_coordinate += width_per_rect
+
+    # Draw in the vertical ticks
+    current_x_coordinate = request.configuration.y_axis_size + width_per_rect
+    for i in range(len(request.data)):
+        # draw a line from x-axis line down to half of the x-axis size
+        drawing.draw_line(current_x_coordinate, request.height - request.configuration.x_axis_size + 20, current_x_coordinate, request.height - request.configuration.x_axis_size/2 + 20, "black", "black", "bottom_tick", False)
+        current_x_coordinate += width_per_rect
+
+    return drawing
 
 def generate_y_axis(drawing: DrawingEngine, request) -> DrawingEngine:
     # Draw the y-axis

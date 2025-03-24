@@ -15,9 +15,9 @@ class DrawingEngine:
         with open(self.filename, "a") as f:
             f.write(f'</svg>\n')
 
-    def draw_rect(self, x: float, y: float, width: float, height: float, fill_colour: str):
+    def draw_rect(self, x: float, y: float, width: float, height: float, fill_colour: str, stroke="none"):
         with open(self.filename, "a") as f:
-            f.write(f'<rect x="{x}" y="{y}" width="{width}" height="{height}" fill="{fill_colour}" />\n')
+            f.write(f'<rect x="{x}" y="{y}" width="{width}" height="{height}" fill="{fill_colour}" stroke="{stroke}"/>\n')
 
     def draw_line(self, sx: float, sy: float, ex: float, ey: float, stroke_colour: str, hover_colour: str, line_name: str, has_on_hover: bool, line_width = 1):
         with open(self.filename, "a") as f:
