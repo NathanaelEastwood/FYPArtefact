@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="500" viewBox="0 0 500 500"><defs></defs>
-<rect x="0" y="0" width="500" height="520" fill="white" stroke="none"/>
-<circle cx="250.0" cy="250.0" r="188" fill="gainsboro"/>
-<path d="M 250.0 250.0 L 249.99999999999997 62.0 A 188 188 0 0 1 287.84412177666803 65.84837104453104 Z" fill="cornsilk" stroke="black" stroke-width="1" id=""/>
-<path d="M 250.0 250.0 L 287.84412177666803 65.84837104453104 A 188 188 0 0 1 357.39842443782106 95.69647305303212 Z" fill="cornflowerblue" stroke="black" stroke-width="1" id=""/>
-<path d="M 250.0 250.0 L 357.39842443782106 95.69647305303212 A 188 188 0 0 1 435.83204497368496 221.53157782913968 Z" fill="chocolate" stroke="black" stroke-width="1" id=""/>
-<path d="M 250.0 250.0 L 435.83204497368496 221.53157782913968 A 188 188 0 0 1 269.01964453363706 437.0354327976763 Z" fill="indianred" stroke="black" stroke-width="1" id=""/>
-<path d="M 250.0 250.0 L 269.01964453363706 437.0354327976763 A 188 188 0 1 1 249.99999999999991 62.0 Z" fill="lavender" stroke="black" stroke-width="1" id=""/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000" viewBox="0 0 1000 1000"><defs></defs>
+<rect x="0" y="0" width="1000" height="1020" fill="white" stroke="none"/>
+<circle cx="500.0" cy="500.0" r="375" fill="gainsboro"/>
+<path d="M 500.0 500.0 L 499.99999999999994 125.0 A 375 375 0 0 1 575.4869450332475 132.67627203031458 Z" fill="cornsilk" stroke="black" stroke-width="1" id=""/>
+<rect x="40" y="980" width="12" height="12" fill="cornsilk" stroke="black"/>
+<text x="55" y="992" font-size="12" text-anchor="start">thing_one</text>
+<path d="M 500.0 500.0 L 575.4869450332475 132.67627203031458 A 375 375 0 0 1 714.2255806605473 192.2137095472715 Z" fill="cornflowerblue" stroke="black" stroke-width="1" id=""/>
+<rect x="408.0" y="980" width="12" height="12" fill="cornflowerblue" stroke="black"/>
+<text x="423.0" y="992" font-size="12" text-anchor="start">thing_two</text>
+<path d="M 500.0 500.0 L 714.2255806605473 192.2137095472715 A 375 375 0 0 1 870.6756216230418 443.21458343578394 Z" fill="chocolate" stroke="black" stroke-width="1" id=""/>
+<rect x="776.0" y="980" width="12" height="12" fill="chocolate" stroke="black"/>
+<text x="791.0" y="992" font-size="12" text-anchor="start">thing_three</text>
+<path d="M 500.0 500.0 L 870.6756216230418 443.21458343578394 A 375 375 0 0 1 537.9381207452867 873.0759962719608 Z" fill="indianred" stroke="black" stroke-width="1" id=""/>
+<rect x="40" y="960" width="12" height="12" fill="indianred" stroke="black"/>
+<text x="55" y="972" font-size="12" text-anchor="start">thing_four</text>
+<path d="M 500.0 500.0 L 537.9381207452867 873.0759962719608 A 375 375 0 1 1 499.99999999999983 125.0 Z" fill="lavender" stroke="black" stroke-width="1" id=""/>
+<rect x="408.0" y="960" width="12" height="12" fill="lavender" stroke="black"/>
+<text x="423.0" y="972" font-size="12" text-anchor="start">thing_five</text>
 </svg>

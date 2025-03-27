@@ -1,7 +1,4 @@
 import math
-
-from fastapi.openapi.models import RequestBody
-
 from DrawingEngine import DrawingEngine
 from request_body import RequestBodyOneDimensional, RequestBodyTwoDimensional
 import numpy as np
@@ -98,16 +95,22 @@ def generate_pie_chart(request: RequestBodyOneDimensional):
     drawing = DrawingEngine("example.svg")
     drawing.establish_headers(request.width, request.height)
     drawing.draw_rect(0, 0, request.width, request.height + 20, "white")
+    total_of_data_points = sum(request.data)
+    number_of_data_points = len(request.data)
 
     request.data = sorted(request.data)
     radius = int(min(request.height/2, request.width/2)) - int(request.height/8)
     center_x = request.width/2
     center_y = request.height/2
     drawing.draw_circle(center_x, center_y, radius)
-    degrees_per_data_point = 360/sum(request.data)
+    degrees_per_data_point = 360/total_of_data_points
     current_angle = 270
 
+    space_per_key = (request.width - 80)/(number_of_data_points/2)
     color_sequence = ["cornsilk", "cornflowerblue", "chocolate", "indianred", "lavender", "lightblue"]
+
+    key_x = 40
+    key_y = request.height - 20
 
     for i, data_point in enumerate(request.data):
         slice_angle = degrees_per_data_point * data_point
@@ -124,6 +127,15 @@ def generate_pie_chart(request: RequestBodyOneDimensional):
         # Draw arc joining the ends together.
         large_arc_flag = 1 if abs(slice_angle) > 180 else 0
         drawing.draw_pie_slice(center_x, center_y, radius, first_line_ex, first_line_ey, second_line_ex, second_line_ey, large_arc_flag, fill=color_sequence[i%len(color_sequence)])
+
+        # Draw key section with firstly the current colour swatch, and then the text.
+        drawing.draw_rect(key_x, key_y, 12, 12, color_sequence[i%len(color_sequence)], stroke="black")
+        drawing.draw_text(key_x + 15, key_y + 12, 12, "start", request.configuration.bar_chart_labels[i])
+        if i == math.floor(number_of_data_points/2):
+            key_x = 40
+            key_y -= 20
+        else:
+            key_x += space_per_key
 
         # Update the current angle for the next segment
         current_angle += slice_angle
