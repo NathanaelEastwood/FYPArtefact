@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Response, status
 
-from graph_production import generate_line_graph, generate_scatter_plot, generate_bar_chart
+from graph_production import generate_line_graph, generate_scatter_plot, generate_bar_chart, generate_pie_chart
 from request_body import RequestBodyOneDimensional, RequestBodyTwoDimensional
 
 app = FastAPI()
@@ -24,6 +24,9 @@ async def get_graph(request: RequestBodyOneDimensional, response: Response):
         case "bar_chart":
             bar_chart = generate_bar_chart(request)
             return bar_chart
+        case "pie_chart":
+            pie_chart = generate_pie_chart(request)
+            return pie_chart
         case _:
             response.status_code = status.HTTP_400_BAD_REQUEST
             return {"Graph type not recognised."}

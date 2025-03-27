@@ -1,28 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="420" viewBox="0 0 400 420"><defs></defs>
-<rect x="0" y="0" width="400" height="420" fill="white" stroke="none"/>
-<style>.x_axis { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="x_axis" d="M50,370 L50,20" />
-<style>.tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="tick" d="M50,370.0 L35.714285714285715,370.0" />
-<text x="33.333333333333336" y="372.0" font-size="8" text-anchor="end">1.0</text>
-<path class="tick" d="M50,282.5 L35.714285714285715,282.5" />
-<text x="33.333333333333336" y="284.5" font-size="8" text-anchor="end">1.5</text>
-<path class="tick" d="M50,195.0 L35.714285714285715,195.0" />
-<text x="33.333333333333336" y="197.0" font-size="8" text-anchor="end">2.0</text>
-<path class="tick" d="M50,107.5 L35.714285714285715,107.5" />
-<text x="33.333333333333336" y="109.5" font-size="8" text-anchor="end">2.5</text>
-<path class="tick" d="M50,20.0 L35.714285714285715,20.0" />
-<text x="33.333333333333336" y="22.0" font-size="8" text-anchor="end">3.0</text>
-<path class="x_axis" d="M50,370 L380,370" />
-<text x="105.0" y="390" font-size="12" text-anchor="middle">One</text>
-<text x="215.0" y="390" font-size="12" text-anchor="middle">Two</text>
-<text x="325.0" y="390" font-size="12" text-anchor="middle">Three</text>
-<style>.bottom_tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
-                <path class="bottom_tick" d="M160.0,370 L160.0,395.0" />
-<path class="bottom_tick" d="M270.0,370 L270.0,395.0" />
-<path class="bottom_tick" d="M380.0,370 L380.0,395.0" />
-<rect x="50.0" y="253.33333333333331" width="110.0" height="116.66666666666667" fill="gainsboro" stroke="black"/>
-<rect x="160.0" y="136.66666666666666" width="110.0" height="233.33333333333334" fill="gainsboro" stroke="black"/>
-<rect x="270.0" y="20.0" width="110.0" height="350.0" fill="gainsboro" stroke="black"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="500" viewBox="0 0 500 500"><defs></defs>
+<rect x="0" y="0" width="500" height="520" fill="white" stroke="none"/>
+<circle cx="250.0" cy="250.0" r="188" fill="gainsboro"/>
+<path d="M 250.0 250.0 L 249.99999999999997 62.0 A 188 188 0 0 1 287.84412177666803 65.84837104453104 Z" fill="cornsilk" stroke="black" stroke-width="1" id=""/>
+<path d="M 250.0 250.0 L 287.84412177666803 65.84837104453104 A 188 188 0 0 1 357.39842443782106 95.69647305303212 Z" fill="cornflowerblue" stroke="black" stroke-width="1" id=""/>
+<path d="M 250.0 250.0 L 357.39842443782106 95.69647305303212 A 188 188 0 0 1 435.83204497368496 221.53157782913968 Z" fill="chocolate" stroke="black" stroke-width="1" id=""/>
+<path d="M 250.0 250.0 L 435.83204497368496 221.53157782913968 A 188 188 0 0 1 269.01964453363706 437.0354327976763 Z" fill="indianred" stroke="black" stroke-width="1" id=""/>
+<path d="M 250.0 250.0 L 269.01964453363706 437.0354327976763 A 188 188 0 1 1 249.99999999999991 62.0 Z" fill="lavender" stroke="black" stroke-width="1" id=""/>
 </svg>

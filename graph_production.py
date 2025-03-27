@@ -1,4 +1,7 @@
 import math
+
+from fastapi.openapi.models import RequestBody
+
 from DrawingEngine import DrawingEngine
 from request_body import RequestBodyOneDimensional, RequestBodyTwoDimensional
 import numpy as np
@@ -38,7 +41,7 @@ def generate_line_graph(request: RequestBodyOneDimensional):
     drawing.close_file()
     return True
 
-def generate_scatter_plot(request: RequestBodyOneDimensional):
+def generate_scatter_plot(request: RequestBodyTwoDimensional):
 
     drawing = DrawingEngine("example.svg")
     drawing.establish_headers(request.width, request.height + 20)
@@ -86,7 +89,44 @@ def generate_bar_chart(request: RequestBodyOneDimensional):
     # draw the coloured rectangles
     for i, point in enumerate(request.data):
         top_coordinate = request.height - (vertical_scaling * point) - request.configuration.x_axis_size + 20
-        drawing.draw_rect(width_per_rect * i + request.configuration.y_axis_size, top_coordinate, width_per_rect, vertical_scaling * point, "gainsboro", stroke="black")
+        drawing.draw_rect(width_per_rect * i + request.configuration.y_axis_size, top_coordinate, width_per_rect, vertical_scaling * point, "gainsboro", stroke="black", title= request.configuration.bar_chart_labels[i])
+
+    drawing.close_file()
+    return True
+
+def generate_pie_chart(request: RequestBodyOneDimensional):
+    drawing = DrawingEngine("example.svg")
+    drawing.establish_headers(request.width, request.height)
+    drawing.draw_rect(0, 0, request.width, request.height + 20, "white")
+
+    request.data = sorted(request.data)
+    radius = int(min(request.height/2, request.width/2)) - int(request.height/8)
+    center_x = request.width/2
+    center_y = request.height/2
+    drawing.draw_circle(center_x, center_y, radius)
+    degrees_per_data_point = 360/sum(request.data)
+    current_angle = 270
+
+    color_sequence = ["cornsilk", "cornflowerblue", "chocolate", "indianred", "lavender", "lightblue"]
+
+    for i, data_point in enumerate(request.data):
+        slice_angle = degrees_per_data_point * data_point
+
+        # Calculate the endpoint of the first line
+        first_line_ex = center_x + radius * math.cos(math.radians(current_angle))
+        first_line_ey = center_y + radius * math.sin(math.radians(current_angle))
+
+        # Calculate the endpoint of the second line
+        second_angle = current_angle + slice_angle
+        second_line_ex = center_x + radius * math.cos(math.radians(second_angle))
+        second_line_ey = center_y + radius * math.sin(math.radians(second_angle))
+
+        # Draw arc joining the ends together.
+        large_arc_flag = 1 if abs(slice_angle) > 180 else 0
+        drawing.draw_pie_slice(center_x, center_y, radius, first_line_ex, first_line_ey, second_line_ex, second_line_ey, large_arc_flag, fill=color_sequence[i%len(color_sequence)])
+
+        # Update the current angle for the next segment
+        current_angle += slice_angle
 
     drawing.close_file()
     return True
@@ -134,7 +174,7 @@ def generate_y_axis(drawing: DrawingEngine, request) -> DrawingEngine:
     number_of_y_ticks = math.ceil(graph_value_range / tick_interval)
 
     # Calculate vertical scaling
-    vertical_scaling = (request.height - request.configuration.x_axis_size) / graph_value_range
+    vertical_scaling = request.height - request.configuration.x_axis_size - 20 / graph_value_range
 
     # Compute first tick position
     y_tick_offset = tick_interval * vertical_scaling
