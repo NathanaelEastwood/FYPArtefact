@@ -1,3 +1,7 @@
+import unittest
+from unittest.mock import mock_open, patch
+
+
 class DrawingEngine:
     filename: str
     distinct_lines: set[str]
