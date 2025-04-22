@@ -206,7 +206,6 @@ def generate_y_axis(drawing: DrawingEngine, request) -> DrawingEngine:
 
     return drawing
 
-
 def generate_x_axis(drawing: DrawingEngine, request):
     # Draw the x-axis
     drawing.draw_line(request.configuration.y_axis_size, (request.height - request.configuration.x_axis_size) + 20,
