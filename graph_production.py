@@ -10,63 +10,75 @@ def generate_line_graph(request: RequestBodyOneDimensional):
 
     data_min = min(request.data)
     data_max = max(request.data)
-    graph_value_range = abs(data_min - data_max)
+    graph_value_range = abs(data_max - data_min)
 
-    # This is the number of pixels per 1 change in the graph data
+    flat_line_mode = False
+    if graph_value_range == 0:
+        # Visually simulate a range so it's not invisible
+        data_min -= 1
+        data_max += 1
+        graph_value_range = data_max - data_min
+        flat_line_mode = True
+
     vertical_scaling = (request.height - request.configuration.x_axis_size - 20) / graph_value_range
-
-    # This is the distance between each data point horizontally
-    horizontal_scaling = (request.width - request.configuration.y_axis_size - 20)/ (len(request.data) - 1)
+    horizontal_scaling = (request.width - request.configuration.y_axis_size - 20) / (len(request.data) - 1)
     current_line_start = request.configuration.y_axis_size
 
     for i in range(len(request.data) - 1):
-
         line_start_x = current_line_start
-        # y = 0 is at the top of the image, so we need to subtract the calculated value from the body height rather than add it.
-        line_start_y = request.height - ((request.data[i] - data_min) * vertical_scaling + request.configuration.x_axis_size)
+        if flat_line_mode:
+            # Force a horizontal line in the vertical center of the graph area
+            line_end_y = (request.height / 2 - 1) - 14
+            line_start_y = (request.height / 2 - 1) - 14
+        else:
+            line_start_y = request.height - ((request.data[i] - data_min) * vertical_scaling + request.configuration.x_axis_size)
+            line_end_y = request.height - ((request.data[i + 1] - data_min) * vertical_scaling + request.configuration.x_axis_size)
 
         line_end_x = current_line_start + horizontal_scaling
-        line_end_y = request.height - ((request.data[i + 1] - data_min) * vertical_scaling + request.configuration.x_axis_size)
 
-        drawing.draw_line(line_start_x, line_start_y + 20, line_end_x, line_end_y + 20, 'black', 'red','main_line', True, line_width=1)
+        drawing.draw_line(line_start_x, line_start_y + 20, line_end_x, line_end_y + 20, 'black', 'red', 'main_line', True, line_width=1)
         current_line_start += horizontal_scaling
 
-    # Add axes with scales
     drawing = generate_y_axis(drawing, request)
     drawing = generate_x_axis(drawing, request)
 
     drawing.close_file()
     return True
 
-def generate_scatter_plot(request: RequestBodyTwoDimensional):
 
+def generate_scatter_plot(request: RequestBodyTwoDimensional):
     drawing = DrawingEngine("example.svg")
     drawing.establish_headers(request.width, request.height + 20)
     drawing.draw_rect(0, 0, request.width, request.height + 20, "white")
 
     array = np.array(request.data)
-    starting_point = np.min(array[:, 1])
-    ending_point = np.max(array[:, 1])
-    data_min = np.min(array[:, 0])
-    data_max = np.max(array[:, 0])
-    graph_value_range = abs(data_max - data_min)
-    graph_horizontal_data_range = abs(ending_point - starting_point)
-    # This is the number of pixels per 1 change in the graph data
-    vertical_scaling = (request.height - request.configuration.x_axis_size) / graph_value_range
 
-    # This is the distance between each data point horizontally
-    horizontal_scaling = (request.width - request.configuration.y_axis_size - 20) / graph_horizontal_data_range
+    x_values = array[:, 0]
+    y_values = array[:, 1]
+
+    x_min = np.min(x_values)
+    x_max = np.max(x_values)
+    y_min = np.min(y_values)
+    y_max = np.max(y_values)
+
+    x_range = x_max - x_min if x_max != x_min else 1
+    y_range = y_max - y_min if y_max != y_min else 1
+
+    horizontal_scaling = (request.width - request.configuration.y_axis_size - 20) / x_range
+    vertical_scaling = (request.height - request.configuration.x_axis_size - 20) / y_range
 
     drawing = generate_y_axis(drawing, request)
     drawing = generate_x_axis(drawing, request)
 
-    for data_point in request.data:
-        x_coordinate = (horizontal_scaling * (data_point[0] - starting_point)) + request.configuration.y_axis_size
-        y_coordinate = (request.height - request.configuration.x_axis_size + 20) - (vertical_scaling * (data_point[1] - data_min))
-        drawing.draw_point(x_coordinate, y_coordinate, label = f"X: {data_point[0]}, Y: {data_point[1]}")
+    for x, y in request.data:
+        x_coordinate = (x - x_min) * horizontal_scaling + request.configuration.y_axis_size
+        y_coordinate = request.height - ((y - y_min) * vertical_scaling + request.configuration.x_axis_size)
+
+        drawing.draw_point(x_coordinate, y_coordinate + 20, label=f"X: {x}, Y: {y}")
 
     drawing.close_file()
     return True
+
 
 def generate_bar_chart(request: RequestBodyOneDimensional):
     drawing = DrawingEngine("example.svg")
@@ -169,37 +181,59 @@ def generate_bar_chart_labels(drawing: DrawingEngine, request) -> DrawingEngine:
     return drawing
 
 def generate_y_axis(drawing: DrawingEngine, request) -> DrawingEngine:
-    # Draw the y-axis
-    drawing.draw_line(request.configuration.y_axis_size, request.height - request.configuration.x_axis_size + 20,
-                      request.configuration.y_axis_size, 20, 'black', 'black', 'x_axis', False)
+    # Draw the y-axis line
+    drawing.draw_line(
+        request.configuration.y_axis_size,
+        request.height - request.configuration.x_axis_size + 20,
+        request.configuration.y_axis_size,
+        20,
+        'black', 'black', 'y_axis', False
+    )
 
-    if type(request.data[0]) == list:
+    # Determine appropriate data column for y-axis
+    if isinstance(request.data[0], list):
         array = np.array(request.data)
-        data_min = np.min(array[:, 0])
-        data_max = np.max(array[:, 0])
+        y_data = array[:, 1]  # Use second column for y-values in 2D data
     else:
-        data_min = min(request.data)
-        data_max = max(request.data)
-    graph_value_range = abs(data_max - data_min)
+        y_data = request.data
 
-    tick_interval = get_nice_number(graph_value_range / 5)  # Aim for ~5 ticks
+    data_min = min(y_data)
+    data_max = max(y_data)
+    graph_value_range = data_max - data_min
+
+    # Handle flat data range
+    if graph_value_range == 0:
+        data_min -= 1
+        data_max += 1
+        graph_value_range = data_max - data_min
+
+    tick_interval = get_nice_number(graph_value_range / 5)
     number_of_y_ticks = math.ceil(graph_value_range / tick_interval)
 
-    # Calculate vertical scaling
     vertical_scaling = (request.height - request.configuration.x_axis_size - 20) / graph_value_range
 
-    # Compute first tick position
-    y_tick_offset = tick_interval * vertical_scaling
     current_y_tick_value = math.ceil(data_min / tick_interval) * tick_interval
+    y_tick_offset = tick_interval * vertical_scaling
     current_y_tick_offset = request.height - request.configuration.x_axis_size - (current_y_tick_value - data_min) * vertical_scaling
 
     # Draw ticks and labels
-    for i in range(number_of_y_ticks + 1):
+    for _ in range(number_of_y_ticks + 1):
         position_text = str(round(current_y_tick_value, 2))
 
-        drawing.draw_line(request.configuration.y_axis_size, current_y_tick_offset + 20,
-                          request.configuration.y_axis_size / 1.4, current_y_tick_offset + 20, "black", "black", "tick", False)
-        drawing.draw_text(request.configuration.y_axis_size / 1.5, current_y_tick_offset + 22, 8, "end", position_text)
+        drawing.draw_line(
+            request.configuration.y_axis_size,
+            current_y_tick_offset + 20,
+            request.configuration.y_axis_size / 1.4,
+            current_y_tick_offset + 20,
+            "black", "black", "tick", False
+        )
+        drawing.draw_text(
+            request.configuration.y_axis_size / 1.5,
+            current_y_tick_offset + 22,
+            8,
+            "end",
+            position_text
+        )
 
         current_y_tick_value += tick_interval
         current_y_tick_offset -= y_tick_offset
@@ -207,47 +241,66 @@ def generate_y_axis(drawing: DrawingEngine, request) -> DrawingEngine:
     return drawing
 
 def generate_x_axis(drawing: DrawingEngine, request):
-    # Draw the x-axis
-    drawing.draw_line(request.configuration.y_axis_size, (request.height - request.configuration.x_axis_size) + 20,
-                      request.width - 20, (request.height - request.configuration.x_axis_size)  + 20, 'black', 'black',
-                      'x_axis', False)
+    # Draw the x-axis line
+    drawing.draw_line(
+        request.configuration.y_axis_size,
+        request.height - request.configuration.x_axis_size + 20,
+        request.width - 20,
+        request.height - request.configuration.x_axis_size + 20,
+        'black', 'black', 'x_axis', False
+    )
 
-    # detect if input is 2d
-    if type(request.data[0]) == list:
+    # Determine data range and horizontal scaling
+    if isinstance(request.data[0], list):
         array = np.array(request.data)
-        data_min = np.min(array[:, 0])
-        data_max = np.max(array[:, 0])
-        graph_value_range = abs(data_max - data_min)
+        x_data = array[:, 0]
+        data_min = np.min(x_data)
+        data_max = np.max(x_data)
+        graph_value_range = data_max - data_min
     else:
-        graph_value_range = len(request.data) - 1
+        x_data = list(range(len(request.data)))
         data_min = 0
+        data_max = len(request.data) - 1
+        graph_value_range = data_max - data_min
 
-    # Choose a "nice" tick interval
-    tick_interval = get_nice_number(graph_value_range / 5)  # Aim for ~5 ticks
+    # Handle flat x-data (vertical stack)
+    if graph_value_range == 0:
+        data_min -= 1
+        data_max += 1
+        graph_value_range = data_max - data_min
+
+    tick_interval = get_nice_number(graph_value_range / 5)
     number_of_x_ticks = math.ceil(graph_value_range / tick_interval)
-
-    # Calculate horizontal scaling
     horizontal_scaling = (request.width - request.configuration.y_axis_size - 20) / graph_value_range
 
-    # Compute first tick position
+    current_x_tick_value = math.ceil(data_min / tick_interval) * tick_interval
     x_tick_offset = tick_interval * horizontal_scaling
-    current_x_tick_value = math.ceil(request.configuration.y_axis_size / tick_interval) * tick_interval
-    current_x_tick_offset = request.configuration.y_axis_size + (
-                current_x_tick_value - request.configuration.y_axis_size) * horizontal_scaling
+    current_x_tick_offset = request.configuration.y_axis_size + (current_x_tick_value - data_min) * horizontal_scaling
 
-    # Draw x-axis ticks and labels
-    for i in range(number_of_x_ticks + 1):
-        position_text = str(round(((current_x_tick_offset - request.configuration.y_axis_size)/horizontal_scaling) + data_min, 2))
+    # Draw ticks and labels
+    for _ in range(number_of_x_ticks + 1):
+        label = str(round(current_x_tick_value, 2))
 
-        drawing.draw_line(current_x_tick_offset, (request.height - request.configuration.x_axis_size) + 20,
-                          current_x_tick_offset, (request.height - request.configuration.x_axis_size) + 25, "black",
-                          "black", "tick", False)
-        drawing.draw_text(current_x_tick_offset, (request.height - request.configuration.x_axis_size) + 35, 8,
-                          "middle", position_text)
+        drawing.draw_line(
+            current_x_tick_offset,
+            request.height - request.configuration.x_axis_size + 20,
+            current_x_tick_offset,
+            request.height - request.configuration.x_axis_size + 25,
+            "black", "black", "tick", False
+        )
+        drawing.draw_text(
+            current_x_tick_offset,
+            request.height - request.configuration.x_axis_size + 35,
+            8,
+            "middle",
+            label
+        )
 
+        current_x_tick_value += tick_interval
         current_x_tick_offset += x_tick_offset
 
     return drawing
+
 
 def get_nice_number(value):
     exponent = math.floor(math.log10(value))  # Order of magnitude
