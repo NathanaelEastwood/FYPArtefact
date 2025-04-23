@@ -1,42 +1,55 @@
 from fastapi import FastAPI, Response, status
-
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from graph_production import generate_line_graph, generate_scatter_plot, generate_bar_chart, generate_pie_chart
 from request_body import RequestBodyOneDimensional, RequestBodyTwoDimensional
 
 app = FastAPI()
 
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+# Add CORS middleware with more permissive settings for development
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins during development
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["*"]  # Expose all headers to the browser
+)
 
 @app.put("/graph/get1d", status_code = 200)
 async def get_graph(request: RequestBodyOneDimensional, response: Response):
     match request.type:
         case "line_graph":
-            linegraph = generate_line_graph(request)
-            return linegraph
+            success = generate_line_graph(request)
+            if success:
+                return FileResponse("example.svg", media_type="image/svg+xml")
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+            return {"error": "Failed to generate line graph"}
         case "bar_chart":
-            bar_chart = generate_bar_chart(request)
-            return bar_chart
+            success = generate_bar_chart(request)
+            if success:
+                return FileResponse("example.svg", media_type="image/svg+xml")
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+            return {"error": "Failed to generate bar chart"}
         case "pie_chart":
-            pie_chart = generate_pie_chart(request)
-            return pie_chart
+            success = generate_pie_chart(request)
+            if success:
+                return FileResponse("example.svg", media_type="image/svg+xml")
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+            return {"error": "Failed to generate pie chart"}
         case _:
             response.status_code = status.HTTP_400_BAD_REQUEST
-            return {"Graph type not recognised."}
+            return {"error": "Graph type not recognised"}
 
 @app.put("/graph/get2d", status_code = 200)
 async def get_graph(request: RequestBodyTwoDimensional, response: Response):
     match request.type:
         case "scatter_graph":
-            scatter_graph = generate_scatter_plot(request)
-            return scatter_graph
+            success = generate_scatter_plot(request)
+            if success:
+                return FileResponse("example.svg", media_type="image/svg+xml")
+            response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+            return {"error": "Failed to generate scatter plot"}
         case _:
             response.status_code = status.HTTP_400_BAD_REQUEST
-            return {"Graph type not recognised."}
+            return {"error": "Graph type not recognised"}

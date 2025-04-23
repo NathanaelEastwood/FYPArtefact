@@ -5,25 +5,29 @@
                 <path class="y_axis" d="M50,570 L50,20" />
 <style>.tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
                 <path class="tick" d="M50,570.0 L35.714285714285715,570.0" />
-<text x="33.333333333333336" y="572.0" font-size="8" text-anchor="end">2.0</text>
-<path class="tick" d="M50,437.5 L35.714285714285715,437.5" />
-<text x="33.333333333333336" y="439.5" font-size="8" text-anchor="end">2.5</text>
-<path class="tick" d="M50,305.0 L35.714285714285715,305.0" />
-<text x="33.333333333333336" y="307.0" font-size="8" text-anchor="end">3.0</text>
-<path class="tick" d="M50,172.5 L35.714285714285715,172.5" />
-<text x="33.333333333333336" y="174.5" font-size="8" text-anchor="end">3.5</text>
-<path class="tick" d="M50,40.0 L35.714285714285715,40.0" />
-<text x="33.333333333333336" y="42.0" font-size="8" text-anchor="end">4.0</text>
+<text x="33.333333333333336" y="572.0" font-size="8" text-anchor="end">3</text>
+<path class="tick" d="M50,481.6666666666667 L35.714285714285715,481.6666666666667" />
+<text x="33.333333333333336" y="483.6666666666667" font-size="8" text-anchor="end">4</text>
+<path class="tick" d="M50,393.33333333333337 L35.714285714285715,393.33333333333337" />
+<text x="33.333333333333336" y="395.33333333333337" font-size="8" text-anchor="end">5</text>
+<path class="tick" d="M50,305.00000000000006 L35.714285714285715,305.00000000000006" />
+<text x="33.333333333333336" y="307.00000000000006" font-size="8" text-anchor="end">6</text>
+<path class="tick" d="M50,216.66666666666674 L35.714285714285715,216.66666666666674" />
+<text x="33.333333333333336" y="218.66666666666674" font-size="8" text-anchor="end">7</text>
+<path class="tick" d="M50,128.33333333333343 L35.714285714285715,128.33333333333343" />
+<text x="33.333333333333336" y="130.33333333333343" font-size="8" text-anchor="end">8</text>
+<path class="tick" d="M50,40.000000000000085 L35.714285714285715,40.000000000000085" />
+<text x="33.333333333333336" y="42.000000000000085" font-size="8" text-anchor="end">9</text>
 <style>.x_axis { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
                 <path class="x_axis" d="M50,570 L980,570" />
-<text x="205.0" y="590" font-size="12" text-anchor="middle">One</text>
-<text x="515.0" y="590" font-size="12" text-anchor="middle">Two</text>
-<text x="825.0" y="590" font-size="12" text-anchor="middle">Three</text>
+<text x="205.0" y="590" font-size="12" text-anchor="middle">Three</text>
+<text x="515.0" y="590" font-size="12" text-anchor="middle">Six</text>
+<text x="825.0" y="590" font-size="12" text-anchor="middle">Nine</text>
 <style>.bottom_tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
                 <path class="bottom_tick" d="M360.0,570 L360.0,595.0" />
 <path class="bottom_tick" d="M670.0,570 L670.0,595.0" />
 <path class="bottom_tick" d="M980.0,570 L980.0,595.0" />
-<rect x="50.0" y="20.0" width="310.0" height="550.0" fill="gainsboro" stroke="black"/>
-<rect x="360.0" y="20.0" width="310.0" height="550.0" fill="gainsboro" stroke="black"/>
+<rect x="50.0" y="386.66666666666663" width="310.0" height="183.33333333333334" fill="gainsboro" stroke="black"/>
+<rect x="360.0" y="203.33333333333331" width="310.0" height="366.6666666666667" fill="gainsboro" stroke="black"/>
 <rect x="670.0" y="20.0" width="310.0" height="550.0" fill="gainsboro" stroke="black"/>
 </svg>
