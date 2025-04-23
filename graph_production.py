@@ -13,7 +13,7 @@ def generate_line_graph(request: RequestBodyOneDimensional):
     graph_value_range = abs(data_min - data_max)
 
     # This is the number of pixels per 1 change in the graph data
-    vertical_scaling = (request.height - request.configuration.x_axis_size)/graph_value_range
+    vertical_scaling = (request.height - request.configuration.x_axis_size - 20) / graph_value_range
 
     # This is the distance between each data point horizontally
     horizontal_scaling = (request.width - request.configuration.y_axis_size)/len(request.data)
@@ -186,7 +186,7 @@ def generate_y_axis(drawing: DrawingEngine, request) -> DrawingEngine:
     number_of_y_ticks = math.ceil(graph_value_range / tick_interval)
 
     # Calculate vertical scaling
-    vertical_scaling = request.height - request.configuration.x_axis_size - 20 / graph_value_range
+    vertical_scaling = (request.height - request.configuration.x_axis_size - 20) / graph_value_range
 
     # Compute first tick position
     y_tick_offset = tick_interval * vertical_scaling
