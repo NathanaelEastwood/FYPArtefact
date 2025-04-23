@@ -16,7 +16,7 @@ def generate_line_graph(request: RequestBodyOneDimensional):
     vertical_scaling = (request.height - request.configuration.x_axis_size - 20) / graph_value_range
 
     # This is the distance between each data point horizontally
-    horizontal_scaling = (request.width - request.configuration.y_axis_size)/len(request.data)
+    horizontal_scaling = (request.width - request.configuration.y_axis_size - 20)/ (len(request.data) - 1)
     current_line_start = request.configuration.y_axis_size
 
     for i in range(len(request.data) - 1):
@@ -86,7 +86,7 @@ def generate_bar_chart(request: RequestBodyOneDimensional):
     # draw the coloured rectangles
     for i, point in enumerate(request.data):
         top_coordinate = request.height - (vertical_scaling * point) - request.configuration.x_axis_size + 20
-        drawing.draw_rect(width_per_rect * i + request.configuration.y_axis_size, top_coordinate, width_per_rect, vertical_scaling * point, "gainsboro", stroke="black", title= request.configuration.bar_chart_labels[i])
+        drawing.draw_rect(width_per_rect * i + request.configuration.y_axis_size, top_coordinate, width_per_rect, vertical_scaling * point, "gainsboro", stroke="black", title= request.configuration.labels[i])
 
     drawing.close_file()
     return True
@@ -130,7 +130,7 @@ def generate_pie_chart(request: RequestBodyOneDimensional):
 
         # Draw key section with firstly the current colour swatch, and then the text.
         drawing.draw_rect(key_x, key_y, 12, 12, color_sequence[i%len(color_sequence)], stroke="black")
-        drawing.draw_text(key_x + 15, key_y + 12, 12, "start", request.configuration.bar_chart_labels[i])
+        drawing.draw_text(key_x + 15, key_y + 12, 12, "start", request.configuration.labels[i])
         if i == math.floor(number_of_data_points/2):
             key_x = 40
             key_y -= 20
@@ -156,7 +156,7 @@ def generate_bar_chart_labels(drawing: DrawingEngine, request) -> DrawingEngine:
     # Draw in the text labels
     current_x_coordinate = request.configuration.y_axis_size + width_per_rect/2
     for i in range(len(request.data)):
-        drawing.draw_text(current_x_coordinate, request.height - request.configuration.x_axis_size + 40, 12, "middle", request.configuration.bar_chart_labels[i])
+        drawing.draw_text(current_x_coordinate, request.height - request.configuration.x_axis_size + 40, 12, "middle", request.configuration.labels[i])
         current_x_coordinate += width_per_rect
 
     # Draw in the vertical ticks
@@ -219,7 +219,7 @@ def generate_x_axis(drawing: DrawingEngine, request):
         data_max = np.max(array[:, 0])
         graph_value_range = abs(data_max - data_min)
     else:
-        graph_value_range = len(request.data)
+        graph_value_range = len(request.data) - 1
         data_min = 0
 
     # Choose a "nice" tick interval

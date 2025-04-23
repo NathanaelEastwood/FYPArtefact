@@ -150,7 +150,7 @@ class TestDrawingEngine(unittest.TestCase):
         assert args[3] == request.height - config.x_axis_size + 20
 
         assert mock_engine.draw_text.call_count == len(request.data)
-        for i, label in enumerate(request.configuration.bar_chart_labels):
+        for i, label in enumerate(request.configuration.labels):
             current_x = config.y_axis_size + ((request.width - config.y_axis_size - 20) / len(request.data)) * (i + 0.5)
             mock_engine.draw_text.assert_any_call(current_x, request.height - config.x_axis_size + 40, 12, "middle",
                                                   label)

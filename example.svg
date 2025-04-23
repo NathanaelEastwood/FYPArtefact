@@ -19,34 +19,39 @@
                             });
                         });
                     };
-                    </script><path class="main_line" d="M50,570.0 L240.0,437.5" />
-<path class="main_line" d="M240.0,437.5 L430.0,305.0" />
-<path class="main_line" d="M430.0,305.0 L620.0,172.5" />
-<path class="main_line" d="M620.0,172.5 L810.0,40.0" />
+                    </script><path class="main_line" d="M50,570.0 L360.0,393.33333333333337" />
+<path class="main_line" d="M360.0,393.33333333333337 L670.0,216.66666666666669" />
+<path class="main_line" d="M670.0,216.66666666666669 L980.0,40.0" />
 <style>.x_axis { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
                 <path class="x_axis" d="M50,570 L50,20" />
 <style>.tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
                 <path class="tick" d="M50,570.0 L35.714285714285715,570.0" />
 <text x="33.333333333333336" y="572.0" font-size="8" text-anchor="end">1.0</text>
-<path class="tick" d="M50,437.5 L35.714285714285715,437.5" />
-<text x="33.333333333333336" y="439.5" font-size="8" text-anchor="end">2.0</text>
-<path class="tick" d="M50,305.0 L35.714285714285715,305.0" />
-<text x="33.333333333333336" y="307.0" font-size="8" text-anchor="end">3.0</text>
-<path class="tick" d="M50,172.5 L35.714285714285715,172.5" />
-<text x="33.333333333333336" y="174.5" font-size="8" text-anchor="end">4.0</text>
-<path class="tick" d="M50,40.0 L35.714285714285715,40.0" />
-<text x="33.333333333333336" y="42.0" font-size="8" text-anchor="end">5.0</text>
+<path class="tick" d="M50,481.6666666666667 L35.714285714285715,481.6666666666667" />
+<text x="33.333333333333336" y="483.6666666666667" font-size="8" text-anchor="end">1.5</text>
+<path class="tick" d="M50,393.33333333333337 L35.714285714285715,393.33333333333337" />
+<text x="33.333333333333336" y="395.33333333333337" font-size="8" text-anchor="end">2.0</text>
+<path class="tick" d="M50,305.00000000000006 L35.714285714285715,305.00000000000006" />
+<text x="33.333333333333336" y="307.00000000000006" font-size="8" text-anchor="end">2.5</text>
+<path class="tick" d="M50,216.66666666666674 L35.714285714285715,216.66666666666674" />
+<text x="33.333333333333336" y="218.66666666666674" font-size="8" text-anchor="end">3.0</text>
+<path class="tick" d="M50,128.33333333333343 L35.714285714285715,128.33333333333343" />
+<text x="33.333333333333336" y="130.33333333333343" font-size="8" text-anchor="end">3.5</text>
+<path class="tick" d="M50,40.000000000000085 L35.714285714285715,40.000000000000085" />
+<text x="33.333333333333336" y="42.000000000000085" font-size="8" text-anchor="end">4.0</text>
 <path class="x_axis" d="M50,570 L980,570" />
 <path class="tick" d="M50.0,570 L50.0,575" />
 <text x="50.0" y="585" font-size="8" text-anchor="middle">0.0</text>
-<path class="tick" d="M236.0,570 L236.0,575" />
-<text x="236.0" y="585" font-size="8" text-anchor="middle">1.0</text>
-<path class="tick" d="M422.0,570 L422.0,575" />
-<text x="422.0" y="585" font-size="8" text-anchor="middle">2.0</text>
-<path class="tick" d="M608.0,570 L608.0,575" />
-<text x="608.0" y="585" font-size="8" text-anchor="middle">3.0</text>
-<path class="tick" d="M794.0,570 L794.0,575" />
-<text x="794.0" y="585" font-size="8" text-anchor="middle">4.0</text>
+<path class="tick" d="M205.0,570 L205.0,575" />
+<text x="205.0" y="585" font-size="8" text-anchor="middle">0.5</text>
+<path class="tick" d="M360.0,570 L360.0,575" />
+<text x="360.0" y="585" font-size="8" text-anchor="middle">1.0</text>
+<path class="tick" d="M515.0,570 L515.0,575" />
+<text x="515.0" y="585" font-size="8" text-anchor="middle">1.5</text>
+<path class="tick" d="M670.0,570 L670.0,575" />
+<text x="670.0" y="585" font-size="8" text-anchor="middle">2.0</text>
+<path class="tick" d="M825.0,570 L825.0,575" />
+<text x="825.0" y="585" font-size="8" text-anchor="middle">2.5</text>
 <path class="tick" d="M980.0,570 L980.0,575" />
-<text x="980.0" y="585" font-size="8" text-anchor="middle">5.0</text>
+<text x="980.0" y="585" font-size="8" text-anchor="middle">3.0</text>
 </svg>
