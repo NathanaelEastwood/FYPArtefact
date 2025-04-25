@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-from configuration_body import Configuration
+from app.configuration_body import Configuration
 
 
 class RequestBodyOneDimensional(BaseModel):

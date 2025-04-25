@@ -1,6 +1,6 @@
 import math
-from DrawingEngine import DrawingEngine
-from request_body import RequestBodyOneDimensional, RequestBodyTwoDimensional
+from app.DrawingEngine import DrawingEngine
+from app.request_body import RequestBodyOneDimensional, RequestBodyTwoDimensional
 import numpy as np
 
 def generate_line_graph(request: RequestBodyOneDimensional):

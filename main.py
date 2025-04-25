@@ -1,8 +1,9 @@
 from fastapi import FastAPI, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-from graph_production import generate_line_graph, generate_scatter_plot, generate_bar_chart, generate_pie_chart
-from request_body import RequestBodyOneDimensional, RequestBodyTwoDimensional
+
+from app.graph_production import generate_line_graph, generate_bar_chart, generate_pie_chart, generate_scatter_plot
+from app.request_body import RequestBodyOneDimensional, RequestBodyTwoDimensional
 
 app = FastAPI()
 
