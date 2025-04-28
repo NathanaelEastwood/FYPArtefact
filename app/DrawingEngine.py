@@ -26,9 +26,11 @@ class DrawingEngine:
             f.write(
                 f'<path d="{path_d}" fill="{fill}" stroke="{stroke}" stroke-width="{stroke_width}" id="{id if id else ""}"/>\n')
 
-    def draw_rect(self, x: float, y: float, width: float, height: float, fill_colour: str, stroke="none", title =""):
+    def draw_rect(self, x: float, y: float, width: float, height: float, fill_colour: str, stroke="none", label = ""):
         with open(self.filename, "a") as f:
-            f.write(f'<rect x="{x}" y="{y}" width="{width}" height="{height}" fill="{fill_colour}" stroke="{stroke}"/>\n')
+            f.write(f'<rect x="{x}" y="{y}" width="{width}" height="{height}" fill="{fill_colour}" stroke="{stroke}">\n')
+            f.write(f'  <title>{label}</title>\n')
+            f.write(f'</rect>')
 
     def draw_line(self, sx: float, sy: float, ex: float, ey: float, stroke_colour: str, hover_colour: str, line_name: str, has_on_hover: bool, line_width = 1):
         with open(self.filename, "a") as f:

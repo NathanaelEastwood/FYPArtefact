@@ -98,7 +98,7 @@ def generate_bar_chart(request: RequestBodyOneDimensional):
     # draw the coloured rectangles
     for i, point in enumerate(request.data):
         top_coordinate = request.height - (vertical_scaling * point) - request.configuration.x_axis_size + 20
-        drawing.draw_rect(width_per_rect * i + request.configuration.y_axis_size, top_coordinate, width_per_rect, vertical_scaling * point, "gainsboro", stroke="black", title= request.configuration.labels[i])
+        drawing.draw_rect(width_per_rect * i + request.configuration.y_axis_size, top_coordinate, width_per_rect, vertical_scaling * point, "gainsboro", stroke="black", label = request.configuration.labels[i])
 
     drawing.close_file()
     return True
