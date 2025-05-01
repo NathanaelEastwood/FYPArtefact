@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             graphOutput.innerHTML = '<div class="text-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>';
 
             // Make the API call
-            const response = await fetch(`http://localhost:8000${endpoint}`, {
+            const response = await fetch(`http://13.41.196.253:8000${endpoint}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
