@@ -6,38 +6,30 @@
                 <path class="y_axis" d="M50,370 L50,20" />
 <style>.tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
                 <path class="tick" d="M50,370.0 L35.714285714285715,370.0" />
-<text x="33.333333333333336" y="372.0" font-size="8" text-anchor="end">1</text>
-<path class="tick" d="M50,322.85714285714283 L35.714285714285715,322.85714285714283" />
-<text x="33.333333333333336" y="324.85714285714283" font-size="8" text-anchor="end">2</text>
-<path class="tick" d="M50,275.71428571428567 L35.714285714285715,275.71428571428567" />
-<text x="33.333333333333336" y="277.71428571428567" font-size="8" text-anchor="end">3</text>
-<path class="tick" d="M50,228.57142857142856 L35.714285714285715,228.57142857142856" />
-<text x="33.333333333333336" y="230.57142857142856" font-size="8" text-anchor="end">4</text>
-<path class="tick" d="M50,181.42857142857142 L35.714285714285715,181.42857142857142" />
-<text x="33.333333333333336" y="183.42857142857142" font-size="8" text-anchor="end">5</text>
-<path class="tick" d="M50,134.28571428571428 L35.714285714285715,134.28571428571428" />
-<text x="33.333333333333336" y="136.28571428571428" font-size="8" text-anchor="end">6</text>
-<path class="tick" d="M50,87.14285714285714 L35.714285714285715,87.14285714285714" />
-<text x="33.333333333333336" y="89.14285714285714" font-size="8" text-anchor="end">7</text>
-<path class="tick" d="M50,39.99999999999999 L35.714285714285715,39.99999999999999" />
-<text x="33.333333333333336" y="41.99999999999999" font-size="8" text-anchor="end">8</text>
+<text x="33.333333333333336" y="372.0" font-size="8" text-anchor="end">1.0</text>
+<path class="tick" d="M50,260.0 L35.714285714285715,260.0" />
+<text x="33.333333333333336" y="262.0" font-size="8" text-anchor="end">2.0</text>
+<path class="tick" d="M50,150.0 L35.714285714285715,150.0" />
+<text x="33.333333333333336" y="152.0" font-size="8" text-anchor="end">3.0</text>
+<path class="tick" d="M50,40.0 L35.714285714285715,40.0" />
+<text x="33.333333333333336" y="42.0" font-size="8" text-anchor="end">4.0</text>
 <style>.x_axis { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
                 <path class="x_axis" d="M50,370 L580,370" />
 <text x="116.25" y="390" font-size="12" text-anchor="middle">One</text>
-<text x="248.75" y="390" font-size="12" text-anchor="middle">Four</text>
-<text x="381.25" y="390" font-size="12" text-anchor="middle">Six</text>
-<text x="513.75" y="390" font-size="12" text-anchor="middle">Eight</text>
+<text x="248.75" y="390" font-size="12" text-anchor="middle">Two</text>
+<text x="381.25" y="390" font-size="12" text-anchor="middle">Three</text>
+<text x="513.75" y="390" font-size="12" text-anchor="middle">Four</text>
 <style>.bottom_tick { stroke: black; stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }</style>
                 <path class="bottom_tick" d="M182.5,370 L182.5,395.0" />
 <path class="bottom_tick" d="M315.0,370 L315.0,395.0" />
 <path class="bottom_tick" d="M447.5,370 L447.5,395.0" />
 <path class="bottom_tick" d="M580.0,370 L580.0,395.0" />
-<rect x="50.0" y="326.25" width="132.5" height="43.75" fill="gainsboro" stroke="black">
+<rect x="50.0" y="370.0" width="132.5" height="0.0" fill="gainsboro" stroke="black">
   <title>One</title>
-</rect><rect x="182.5" y="195.0" width="132.5" height="175.0" fill="gainsboro" stroke="black">
+</rect><rect x="182.5" y="260.0" width="132.5" height="110.0" fill="gainsboro" stroke="black">
+  <title>Two</title>
+</rect><rect x="315.0" y="150.0" width="132.5" height="220.0" fill="gainsboro" stroke="black">
+  <title>Three</title>
+</rect><rect x="447.5" y="40.0" width="132.5" height="330.0" fill="gainsboro" stroke="black">
   <title>Four</title>
-</rect><rect x="315.0" y="107.5" width="132.5" height="262.5" fill="gainsboro" stroke="black">
-  <title>Six</title>
-</rect><rect x="447.5" y="20.0" width="132.5" height="350.0" fill="gainsboro" stroke="black">
-  <title>Eight</title>
 </rect></svg>

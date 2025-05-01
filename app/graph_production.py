@@ -86,19 +86,21 @@ def generate_bar_chart(request: RequestBodyOneDimensional):
     drawing.draw_rect(0, 0, request.width, request.height + 20, "white")
 
     data_max = max(request.data)
+    data_min = min(request.data)
     number_of_rects_to_draw = len(request.data)
     available_width = request.width - request.configuration.y_axis_size - 20
     width_per_rect = available_width/number_of_rects_to_draw
 
-    vertical_scaling = (request.height - request.configuration.x_axis_size) / data_max
+    vertical_scaling = (request.height - request.configuration.x_axis_size - 20) / (data_max - data_min)
 
     generate_y_axis(drawing, request)
     generate_bar_chart_labels(drawing, request)
 
     # draw the coloured rectangles
     for i, point in enumerate(request.data):
-        top_coordinate = request.height - (vertical_scaling * point) - request.configuration.x_axis_size + 20
-        drawing.draw_rect(width_per_rect * i + request.configuration.y_axis_size, top_coordinate, width_per_rect, vertical_scaling * point, "gainsboro", stroke="black", label = request.configuration.labels[i])
+        adjusted_point = point - data_min
+        top_coordinate = request.height - (vertical_scaling * adjusted_point) - request.configuration.x_axis_size + 20
+        drawing.draw_rect(width_per_rect * i + request.configuration.y_axis_size, top_coordinate, width_per_rect, vertical_scaling * adjusted_point, "gainsboro", stroke="black", label = request.configuration.labels[i])
 
     drawing.close_file()
     return True
@@ -303,14 +305,18 @@ def generate_x_axis(drawing: DrawingEngine, request):
 
 
 def get_nice_number(value):
-    exponent = math.floor(math.log10(value))  # Order of magnitude
-    fraction = value / (10 ** exponent)  # Fractional part
-    if fraction <= 1.5:
+    exponent = math.floor(math.log10(value))
+    fraction = value / (10 ** exponent)
+
+    if fraction <= 1:
         nice_fraction = 1
-    elif fraction <= 3:
+    elif fraction <= 2:
         nice_fraction = 2
-    elif fraction <= 7:
+    elif fraction <= 2.5:
+        nice_fraction = 2.5
+    elif fraction <= 5:
         nice_fraction = 5
     else:
         nice_fraction = 10
+
     return nice_fraction * (10 ** exponent)
